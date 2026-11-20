@@ -284,6 +284,7 @@ a.sol.prob:hover{background:var(--panel)}
 .chips-l{font:400 12px var(--f-mono);color:var(--dim);width:100%}
 .chips button{all:unset;cursor:pointer;border:1px solid var(--line2);padding:8px 12px;font:400 13px/1.3 var(--f-body);color:var(--mid)}
 .chips button:hover,.chips button:focus-visible{color:var(--text);border-color:var(--text)}
+.lang button,.menu-btn{min-height:40px}footer nav a{display:inline-block;padding:10px 6px}footer .brand{min-height:40px}
 </style>
 </head>
 <body>
@@ -699,7 +700,8 @@ a.sol.prob:hover{background:var(--panel)}
   q5:"¿Con qué herramientas trabajáis?",a5x:"Con las que ya usas: hojas de cálculo, email, CRM, contabilidad, e-commerce y mensajería. Partimos de lo que tienes."}
   };
   var COPY = {en:{copied:"Copied",req:"Request",lines:["Name","Email","Company","Country","Instagram","Needs","Message"]},pt:{copied:"Copiado",req:"Pedido",lines:["Nome","E-mail","Empresa","País","Instagram","Necessidade","Mensagem"]},es:{copied:"Copiado",req:"Solicitud",lines:["Nombre","Email","Empresa","País","Instagram","Necesidad","Mensaje"]},
-    sent:{en:["Thank you. Your request was sent.","We will reply by email."],pt:["Obrigado. Seu pedido foi enviado.","Responderemos por e-mail."],es:["Gracias. Tu solicitud fue enviada.","Responderemos por email."]},
+    auto:{en:"Hello, thank you for contacting DASON. We received your request and will reply by email within 1 business day. If you want to add details in the meantime, just reply to this message or send us a DM on Instagram: @dasontech. DASON",pt:"Olá, obrigado por entrar em contato com a DASON. Recebemos o seu pedido e responderemos por e-mail em até 1 dia útil. Se quiser acrescentar detalhes, é só responder a esta mensagem ou nos chamar no Instagram: @dasontech. DASON",es:"Hola, gracias por contactar con DASON. Hemos recibido tu solicitud y responderemos por email en un plazo de 1 día laborable. Si quieres añadir detalles, responde a este mensaje o escríbenos por Instagram: @dasontech. DASON"},
+    sent:{en:["Thank you. Your request was sent.","We will reply by email, usually within 1 business day. A confirmation is on its way to your inbox."],pt:["Obrigado. Seu pedido foi enviado.","Responderemos por e-mail."],es:["Gracias. Tu solicitud fue enviada.","Responderemos por email."]},
     calcMsg:{en:function(a){return "Calculation: "+a.min+" min × "+a.times+" a day = "+a.h+" hours a year ("+a.w+" work weeks, about "+a.c+" a year)."},
              pt:function(a){return "Cálculo: "+a.min+" min × "+a.times+" por dia = "+a.h+" horas por ano ("+a.w+" semanas de trabalho, cerca de "+a.c+" por ano)."},
              es:function(a){return "Cálculo: "+a.min+" min × "+a.times+" al día = "+a.h+" horas al año ("+a.w+" semanas de trabajo, unos "+a.c+" al año)."}}};
@@ -803,18 +805,18 @@ a.sol.prob:hover{background:var(--panel)}
   form.addEventListener("submit", function(e){
     e.preventDefault();
     var sel = $("fNeed");
-    var d = {name:$("fName").value.trim(), email:$("fEmail").value.trim(), company:$("fCompany").value.trim(), country:$("fCountry").value.trim(), instagram:$("fIg").value.trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,"@").replace(/^@?/,"@").replace(/\/$/,"").replace(/^@$/,""), need:sel.value, needText:sel.value?sel.options[sel.selectedIndex].text:"", message:$("fMsg").value.trim(), website:$("fWeb").value, lang:lang};
+    var d = {name:$("fName").value.trim(), email:$("fEmail").value.trim(), company:$("fCompany").value.trim(), country:$("fCountry").value.trim(), instagram:$("fIg").value.trim().replace(/^(https?:\/\/)?(www\.)?instagram\.com\//i,"").replace(/[?#].*$/,"").replace(/\/+$/,"").replace(/^@+/,"").replace(/^(.+)$/,"@$1"), need:sel.value, needText:sel.value?sel.options[sel.selectedIndex].text:"", message:$("fMsg").value.trim(), website:$("fWeb").value, lang:lang};
     var ok = d.name && /^\S+@\S+\.\S+$/.test(d.email) && d.need;
     $("fErr").hidden = !!ok;
     if(!ok) return;
     if(d.website) return;                     /* honeypot */
-    var resBox = $("fResult");
+    var resBox = $("fResult"); var sb=form.querySelector("button[type=submit]"); if(sb) sb.disabled=true;
     function showCopy(){
       form.hidden = true; resBox.hidden = false; $("fPre").textContent = summary(d);
       resBox.scrollIntoView({behavior:"smooth",block:"nearest"});
     }
     if(CONFIG.formEndpoint){
-      fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(Object.assign({_subject:"DASON quote request: "+d.name,_template:"table",_captcha:"false"},d))})
+      fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(Object.assign({_subject:"DASON quote request: "+d.name,_template:"table",_captcha:"false",_autoresponse:COPY.auto[lang]},d))})
         .then(function(r){ if(!r.ok) throw new Error("bad"); return r.json(); })
         .then(function(j){ if(j && (j.success===false||j.success==="false")) throw new Error("inactive"); form.hidden = true; resBox.hidden = false;
           $("fResTitle").textContent = COPY.sent[lang][0]; $("fResText").textContent = COPY.sent[lang][1]; $("fPre").hidden = true; $("fCopy").hidden = true; })
