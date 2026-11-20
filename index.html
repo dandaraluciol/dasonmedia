@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DASON | AI automation and agents for business</title>
+<meta name="description" content="DASON builds AI agents, workflows and integrations that take repetitive work off your team. Remote-first automation studio working with companies worldwide, in English, Portuguese and Spanish.">
+<meta name="theme-color" content="#09090A">
+<!-- Replace https://YOUR-DOMAIN with the real address once the domain is live -->
+<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DASON">
+<meta property="og:title" content="DASON | We delete the line nobody invoices.">
+<meta property="og:description" content="DASON builds AI agents, workflows and integrations that take repetitive work off your team. Remote-first automation studio working with companies worldwide, in English, Portuguese and Spanish.">
+<meta property="og:url" content="https://dandaraluciol.github.io/dasonmedia/">
+<meta property="og:image" content="https://dandaraluciol.github.io/dasonmedia/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23090A0A'/%3E%3Cpath d='M18,18 H48 A32,32 0 0 1 48,82 H18 Z M34,34 V66 H46 A16,16 0 0 0 46,34 Z' fill='%23EDEDEE' fill-rule='evenodd'/%3E%3Crect x='42' y='44' width='9' height='12' fill='%236E6E75'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@500;700;800&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "DASON", "description": "DASON builds AI agents, workflows and integrations that take repetitive work off your team. Remote-first automation studio working with companies worldwide, in English, Portuguese and Spanish.", "areaServed": "Worldwide", "knowsLanguage": ["en", "pt", "es"], "sameAs": ["https://www.instagram.com/dasontech/"], "serviceType": ["AI agents", "Workflow automation", "System integrations", "Automated reporting", "Process diagnosis"]}</script>
+<style>
+/* Layout concept: a ledger. Hairline-ruled left-aligned sections, one big thesis headline,
+   a receipt that prints the hidden cost and strikes it out. Black and gray only; the gray
+   cursor block from the logo is the single recurring accent. */
+:root{
+  --bg:#09090A; --bg2:#0E0E10; --panel:#131315; --line:#27272B; --line2:#3A3A40;
+  --text:#EDEDEE; --mid:#A4A4AB; --dim:#6E6E75; --ink:#09090A;
+  --f-display:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --gutter-l:max(20px,env(safe-area-inset-left,0px));
+  --gutter-r:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:400 16px/1.6 var(--f-body); -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 2px 2px,#1A1A1D 1.2px,transparent 1.4px);
+  background-size:40px 40px;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.mono{font-family:var(--f-mono)}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(9,9,10,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:800 20px var(--f-display);letter-spacing:.22em}
+.brand svg{width:30px;height:30px;flex:none}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:26px}
+nav.main a{font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--mid);padding:6px 0}
+nav.main a:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--line2)}
+.lang button{all:unset;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.1em;padding:7px 9px;color:var(--mid)}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.lang button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;gap:12px;font:700 13px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--text);padding:15px 22px;background:var(--text);color:var(--ink);transition:background .15s,color .15s}
+.btn:hover{background:transparent;color:var(--text)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--text)}
+.btn.small{padding:10px 14px;font-size:12px}
+.menu-btn{all:unset;display:none;cursor:pointer;margin-left:auto;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line2);padding:9px 12px}
+.menu-btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+nav.main a.btn{color:var(--ink);letter-spacing:.12em}
+nav.main a.btn:hover{color:var(--text)}
+
+/* sections */
+section{border-top:1px solid var(--line);padding-block:clamp(64px,10vw,128px)}
+.eyebrow{display:flex;align-items:center;gap:10px;font:500 12px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:26px}
+.eyebrow::before{content:"";width:9px;height:15px;background:var(--dim);flex:none}
+h2{font-size:clamp(2rem,4.6vw,3.7rem);max-width:18ch}
+.lead{color:var(--mid);font-size:1.0625rem;max-width:60ch}
+
+/* hero */
+.hero{border-top:0;padding-block:clamp(48px,8vw,104px) clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(32px,6vw,88px);align-items:center}
+h1{font-size:clamp(2.7rem,7.2vw,6.2rem);letter-spacing:-.045em;line-height:.98}
+h1 .dim{color:var(--dim)}
+.hero .lead{margin-top:28px;font-size:clamp(1.0625rem,1.6vw,1.25rem)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-meta{margin-top:30px;font:400 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.cursor{display:inline-block;width:.42em;height:.78em;background:var(--dim);margin-left:.08em;vertical-align:-.02em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* receipt */
+.receipt{position:relative;background:var(--panel);border:1px solid var(--line2);padding:24px 22px 34px;font-family:var(--f-mono);font-size:13px;color:var(--mid);
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat, conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat, conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x}
+.receipt .tag{display:inline-block;border:1px solid var(--line2);padding:3px 8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.receipt h3{font:700 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.rline{position:relative;display:grid;grid-template-columns:1fr auto;gap:3px 16px;padding:12px 0;border-top:1px dashed var(--line2)}
+.rline b{color:var(--text);font-weight:500}
+.rline small{grid-column:1;font-size:11px;color:var(--dim)}
+.rline .h{grid-column:2;grid-row:1 / span 2;align-self:center;color:var(--text);font-weight:700}
+.rline b,.rline .h{background:linear-gradient(var(--text),var(--text)) no-repeat left 52%/0% 2px;animation:strike .55s cubic-bezier(.7,0,.2,1) forwards;animation-delay:calc(1.2s + var(--i)*.4s)}
+.rline b{justify-self:start;padding-right:4px}
+@keyframes strike{to{background-size:100% 2px}}
+.rtotal{display:grid;gap:4px;border-top:2px solid var(--text);padding-top:14px;margin-top:2px}
+.rtotal .row{display:flex;justify-content:space-between;gap:12px;color:var(--text);font-weight:700;font-size:15px}
+.rtotal span.s{font-size:12px;color:var(--mid)}
+.stamp{display:inline-block;margin:20px 0 6px;border:2px solid var(--text);padding:8px 12px;font:800 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text);transform:rotate(-3deg)}
+.rfoot{display:flex;align-items:center;gap:6px;margin-top:14px;color:var(--text);font-weight:700}
+.rnote{margin-top:10px;font-size:11px;color:var(--dim)}
+
+/* who we are */
+.who-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:start}
+.who-grid h2{max-width:16ch}
+.who-grid .lead+.lead{margin-top:18px}
+
+/* solutions */
+.sol-list{margin-top:56px;border-top:1px solid var(--line)}
+.sol{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr) minmax(0,.9fr);gap:12px clamp(20px,4vw,56px);padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline;transition:background .2s}
+.sol:hover{background:linear-gradient(90deg,#111113,transparent)}
+.sol h3{font-size:clamp(1.3rem,2.2vw,1.75rem);letter-spacing:-.03em}
+.sol p{color:var(--mid)}
+.sol .use{font:400 12px/1.7 var(--f-mono);letter-spacing:.04em;color:var(--dim)}
+
+/* calculator */
+.calc{background:var(--bg2)}
+.calc-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,88px);align-items:start}
+.panel{border:1px solid var(--line2);background:var(--panel);padding:clamp(20px,3vw,34px)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:grid;gap:8px;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+input,select,textarea{font:400 16px var(--f-body);color:var(--text);background:var(--bg);border:1px solid var(--line2);border-radius:0;padding:13px 14px;width:100%;min-width:0;appearance:none;-webkit-appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--mid) 50%),linear-gradient(135deg,var(--mid) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:38px}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--text);outline-offset:0;border-color:var(--text)}
+.out{display:grid;gap:0}
+.out .big{font:800 clamp(3rem,7vw,5.4rem)/1 var(--f-display);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.out .unit{font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-top:8px}
+.out .pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;padding-top:24px;border-top:1px dashed var(--line2)}
+.out .pair .v{font:700 clamp(1.4rem,2.6vw,2rem) var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.fine{font:400 12px/1.6 var(--f-mono);color:var(--dim);margin-top:20px}
+
+/* method */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;border-top:1px solid var(--line2)}
+.step{padding:30px 26px 10px 0;position:relative}
+.step+.step{padding-left:26px;border-left:1px solid var(--line)}
+.step .n{font:500 12px var(--f-mono);letter-spacing:.16em;color:var(--dim)}
+.step h3{font-size:1.9rem;margin:14px 0 12px}
+.step p{color:var(--mid)}
+
+/* audience */
+.aud-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,6vw,96px)}
+.aud{border-top:1px solid var(--line)}
+.aud div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.aud b{font:700 1.05rem var(--f-display);letter-spacing:-.02em}
+.aud span{color:var(--mid)}
+
+/* why */
+.why{background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.why-grid article{background:var(--bg2);padding:32px 28px 36px;grid-column:span 2}
+.why-grid article:nth-child(4),.why-grid article:nth-child(5){grid-column:span 3}
+.why-grid h3{font-size:1.35rem;letter-spacing:-.03em;margin-bottom:12px}
+.why-grid p{color:var(--mid)}
+.why-grid .x{display:block;font:700 12px var(--f-mono);letter-spacing:.14em;color:var(--dim);margin-bottom:22px}
+
+/* global */
+.glob-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,6vw,96px);align-items:center}
+.clocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.clock{background:var(--bg);padding:20px 18px}
+.clock .c{font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.clock .t{font:700 clamp(1.5rem,3vw,2.1rem) var(--f-display);letter-spacing:-.03em;margin-top:10px;font-variant-numeric:tabular-nums}
+.clock .o{display:flex;align-items:center;gap:8px;margin-top:8px;font:400 11px var(--f-mono);color:var(--dim)}
+.clock .o i{width:8px;height:8px;border:1px solid var(--dim);display:inline-block}
+.clock.on .o i{background:var(--text);border-color:var(--text)}
+.clock.on .o{color:var(--text)}
+.clk-hint{margin-top:14px;font:400 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+/* payments */
+.pay{background:var(--bg2)}
+.tabs{display:flex;flex-wrap:wrap;gap:0;margin:44px 0 0;border:1px solid var(--line2);width:fit-content;max-width:100%}
+.tabs button{all:unset;cursor:pointer;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding:14px 20px;color:var(--mid)}
+.tabs button+button{border-left:1px solid var(--line2)}
+.tabs button[aria-selected="true"]{background:var(--text);color:var(--ink)}
+.tabs button:focus-visible{outline:2px solid var(--text);outline-offset:-4px}
+.methods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px;max-width:860px}
+.method{background:var(--panel);padding:28px}
+.method h3{font-size:1.5rem;margin:14px 0 10px}
+.method p{color:var(--mid)}
+.method .k{font:500 11px var(--f-mono);letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.safe{display:flex;gap:14px;max-width:860px;margin-top:20px;padding:18px 20px;border:1px dashed var(--line2);color:var(--mid);font-size:.9375rem}
+.safe::before{content:"";flex:none;width:9px;height:15px;background:var(--text);margin-top:5px}
+.how{margin-top:64px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line2);max-width:860px}
+.how div{padding:22px 20px 0 0}
+.how div+div{padding-left:20px;border-left:1px solid var(--line)}
+.how .n{font:500 12px var(--f-mono);letter-spacing:.16em;color:var(--dim)}
+.how b{display:block;margin-top:10px;font:700 1.05rem/1.3 var(--f-display);letter-spacing:-.02em}
+.how-title{margin-top:64px;font:500 12px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mid)}
+
+/* contact */
+.ct-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(28px,6vw,96px);align-items:start}
+.ct-links{margin-top:36px;display:grid;gap:0;border-top:1px solid var(--line)}
+.ct-links a,.ct-links div{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none;font:500 14px var(--f-mono);overflow-wrap:anywhere}
+.ct-links span:first-child{color:var(--dim);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+.ct-links a:hover{background:#111113}
+form .fields{margin-bottom:18px}
+form .full{grid-column:1 / -1}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.err{color:var(--text);font:500 13px var(--f-mono);margin:0 0 14px}
+.result{display:grid;gap:16px}
+.result h3{font-size:1.6rem}
+.result pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border:1px solid var(--line2);padding:16px;font:400 13px/1.6 var(--f-mono);color:var(--mid)}
+
+/* faq */
+.faq{max-width:860px;margin-top:48px;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font:700 1.15rem/1.3 var(--f-display);letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 22px var(--f-mono);color:var(--mid);flex:none}
+details[open] summary::after{content:"–"}
+details p{color:var(--mid);padding:0 40px 26px 0;max-width:68ch}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:44px calc(44px + env(safe-area-inset-bottom,0px))}
+.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between}
+.foot .small{font:400 12px var(--f-mono);letter-spacing:.08em;color:var(--dim)}
+.foot nav{display:flex;flex-wrap:wrap;gap:6px 24px}
+.foot nav a{font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+.foot nav a:hover{color:var(--text)}
+
+/* responsive */
+@media (max-width:980px){
+  .hero-grid,.who-grid,.calc-grid,.aud-grid,.glob-grid,.ct-grid{grid-template-columns:minmax(0,1fr)}
+  .sol{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step:nth-child(3){padding-left:0;border-left:0}
+  .step:nth-child(n+3){border-top:1px solid var(--line);margin-top:20px}
+  .why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .why-grid article,.why-grid article:nth-child(4),.why-grid article:nth-child(5){grid-column:auto}
+  .why-grid article:last-child{grid-column:1 / -1}
+}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gutter-r) 20px var(--gutter-l)}
+  nav.main.open{display:flex}
+  nav.main a{padding:16px 0;border-bottom:1px solid var(--line)}
+  nav.main .lang{margin-top:16px;align-self:flex-start}
+  nav.main .btn{margin-top:16px;justify-content:center}
+  .top .wrap{gap:12px}
+}
+@media (max-width:640px){
+  .fields{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .step,.step+.step{padding:26px 0 8px;border-left:0}
+  .step+.step{border-top:1px solid var(--line)}
+  .step:nth-child(n+3){margin-top:0}
+  .why-grid{grid-template-columns:minmax(0,1fr)}
+  .why-grid article:last-child{grid-column:auto}
+  .methods{grid-template-columns:minmax(0,1fr)}
+  .how{grid-template-columns:minmax(0,1fr)}
+  .how div,.how div+div{padding:20px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .clocks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aud div{grid-template-columns:minmax(0,1fr)}
+  .tabs{width:100%}
+  .tabs button{flex:1 1 auto;text-align:center;padding:14px 10px}
+  .out .pair{grid-template-columns:minmax(0,1fr)}
+  .cta-row .btn{width:100%;justify-content:center}
+  .stamp{font-size:11.5px;letter-spacing:.06em}
+  details p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .cursor{animation:none}
+  .rline b,.rline .h{animation:none;background-size:100% 2px}
+  .btn{transition:none}
+}
+
+#problems{padding-block:clamp(56px,9vw,112px);border-top:1px solid var(--line)}
+a.sol.prob{display:block;text-decoration:none;color:inherit}
+a.sol.prob:hover{background:var(--panel)}
+.chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chips-l{font:400 12px var(--f-mono);color:var(--dim);width:100%}
+.chips button{all:unset;cursor:pointer;border:1px solid var(--line2);padding:8px 12px;font:400 13px/1.3 var(--f-body);color:var(--mid)}
+.chips button:hover,.chips button:focus-visible{color:var(--text);border-color:var(--text)}
+</style>
+</head>
+<body>
+
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="DASON">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0,0 H48 A50,50 0 0 1 48,100 H0 Z M24,24 V76 H46 A26,26 0 0 0 46,24 Z" fill="#EDEDEE" fill-rule="evenodd"/><rect x="34" y="38" width="16" height="24" fill="#6E6E75"/></svg>
+      <span>DASON</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" data-i18n="nav_menu">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="solutions.html" data-i18n="nav_sol">Solutions</a>
+      <a href="diagnostic.html" data-i18n="nav_diag">Diagnostic</a>
+      <a href="#method" data-i18n="nav_how">Method</a>
+      <a href="#why" data-i18n="nav_why">Why DASON</a>
+      <a href="#payments" data-i18n="nav_pay">Payments</a>
+      <a href="#contact" data-i18n="nav_ct">Contact</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="btn small" href="#contact" data-i18n="cta_quote">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" data-i18n="h_eyebrow">AI automation &amp; agents · Worldwide</div>
+      <h1><span data-i18n="h_title">We delete the line nobody invoices.</span><span class="cursor" aria-hidden="true"></span></h1>
+      <p class="lead" data-i18n="h_sub">DASON builds AI agents, workflows and integrations that take repetitive work off your team, so your people spend their hours on what only they can do.</p>
+      <div class="cta-row">
+        <a class="btn" href="#contact" data-i18n="h_cta1">Request a quote</a>
+        <a class="btn ghost" href="#calculator" data-i18n="h_cta2">Calculate your hidden bill</a>
+      </div>
+      <p class="hero-meta" data-i18n="h_meta">Remote-first · Any time zone · English, Português, Español</p>
+    </div>
+
+    <aside class="receipt" aria-label="Example receipt">
+      <span class="tag" data-i18n="r_tag">Illustrative example</span>
+      <h3 data-i18n="r_title">Annual cost of repeated work</h3>
+      <div class="rline" style="--i:0"><b data-i18n="r1">Copy emails into a sheet</b><span class="h">208 h</span><small data-i18n="r1d">10 min × 5 a day</small></div>
+      <div class="rline" style="--i:1"><b data-i18n="r2">Answer the same questions</b><span class="h">250 h</span><small data-i18n="r2d">15 min × 4 a day</small></div>
+      <div class="rline" style="--i:2"><b data-i18n="r3">Build the weekly report</b><span class="h">100 h</span><small data-i18n="r3d">2 h × 50 weeks</small></div>
+      <div class="rtotal">
+        <div class="row"><span data-i18n="r_total">Total</span><span data-i18n="r_total_v">558 hours a year</span></div>
+        <span class="s" data-i18n="r_total_s">Almost 14 work weeks.</span>
+      </div>
+      <div class="stamp" data-i18n="r_stamp">Nobody invoices it. You pay it.</div>
+      <div class="rfoot"><span data-i18n="r_foot">DASON deletes that line.</span></div>
+      <p class="rnote" data-i18n="r_note">250 working days, 40-hour weeks.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap who-grid">
+    <div>
+      <div class="eyebrow" data-i18n="s_eyebrow">Who we are</div>
+      <h2 data-i18n="s_title">A technology company for the work nobody should do by hand.</h2>
+    </div>
+    <div>
+      <p class="lead" data-i18n="s_p1">DASON designs and builds automation and AI for businesses of any size. We find the repetitive work hiding in your operation, remove it, and leave your team with clearer days and fewer errors.</p>
+      <p class="lead" data-i18n="s_p2">We are remote by design, so a company in São Paulo, Madrid or Dubai gets the same process, the same standards and the same attention.</p>
+    </div>
+  </div>
+</section>
+
+<section id="problems">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="pr_eyebrow">Start from the problem</div>
+    <h2 data-i18n="pr_title">No technical words needed. Find the situation that sounds like your week.</h2>
+    <div class="sol-list"><a class="sol prob" href="automatic-appointment-booking.html"><h3 data-i18n="pr1_t">Clients book themselves</h3><p data-i18n="pr1_q">How do I let my clients book appointments on their own?</p><p class="use" data-i18n="pr_more">See how it works →</p></a><a class="sol prob" href="automatic-customer-replies.html"><h3 data-i18n="pr2_t">Answer messages automatically</h3><p data-i18n="pr2_q">How do I answer customer messages automatically?</p><p class="use" data-i18n="pr_more">See how it works →</p></a><a class="sol prob" href="order-management-automation.html"><h3 data-i18n="pr3_t">Orders organised for you</h3><p data-i18n="pr3_q">How do I organise my orders without losing track of them?</p><p class="use" data-i18n="pr_more">See how it works →</p></a><a class="sol prob" href="automatic-payment-reminders.html"><h3 data-i18n="pr4_t">Payment reminders on autopilot</h3><p data-i18n="pr4_q">How do I send payment reminders automatically?</p><p class="use" data-i18n="pr_more">See how it works →</p></a><a class="sol prob" href="lead-follow-up-automation.html"><h3 data-i18n="pr5_t">Never lose a lead</h3><p data-i18n="pr5_q">How do I stop losing potential customers and organise my customer service?</p><p class="use" data-i18n="pr_more">See how it works →</p></a><a class="sol prob" href="save-time-on-admin-work.html"><h3 data-i18n="pr6_t">Less admin, more business</h3><p data-i18n="pr6_q">How do I stop doing everything manually and save time on admin?</p><p class="use" data-i18n="pr_more">See how it works →</p></a></div>
+    <div class="cta-row" style="margin-top:28px"><a class="btn" href="diagnostic.html" data-i18n="pr_diag">Take the 2-minute diagnostic</a><a class="btn ghost" href="solutions.html" data-i18n="pr_all">See all solutions</a></div>
+  </div>
+</section>
+
+<section id="solutions">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="sol_eyebrow">What we build</div>
+    <h2 data-i18n="sol_title">Five ways we take work off your team.</h2>
+    <div class="sol-list">
+      <article class="sol"><h3 data-i18n="sol1_t">AI agents</h3><p data-i18n="sol1_d">Assistants that read, decide inside rules you set, and pass the hard cases to a person.</p><p class="use" data-i18n="sol1_u">Customer questions · lead qualification · internal help desk</p></article>
+      <article class="sol"><h3 data-i18n="sol2_t">Workflow automation</h3><p data-i18n="sol2_d">The repeated steps between your tools, running without anyone clicking.</p><p class="use" data-i18n="sol2_u">Orders · invoices · onboarding · approvals</p></article>
+      <article class="sol"><h3 data-i18n="sol3_t">Integrations and data sync</h3><p data-i18n="sol3_d">Your systems stop needing a person to retype data between them.</p><p class="use" data-i18n="sol3_u">CRM · stock · accounting · e-commerce · spreadsheets</p></article>
+      <article class="sol"><h3 data-i18n="sol4_t">Reports that build themselves</h3><p data-i18n="sol4_d">The Monday report assembles itself from live data and lands where your team already looks.</p><p class="use" data-i18n="sol4_u">Sales · operations · finance · client updates</p></article>
+      <article class="sol"><h3 data-i18n="sol5_t">Process diagnosis</h3><p data-i18n="sol5_d">A structured look at where hours leak, ending in a ranked list of what is worth automating first.</p><p class="use" data-i18n="sol5_u">For teams who want a plan before they commit</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calculator">
+  <div class="wrap calc-grid">
+    <div>
+      <div class="eyebrow" data-i18n="c_eyebrow">Try it</div>
+      <h2 data-i18n="c_title">Calculate the bill nobody sends you.</h2>
+      <p class="lead" style="margin-top:22px" data-i18n="c_sub">Pick one task your team repeats.</p>
+      <div class="panel" style="margin-top:32px">
+        <div class="fields">
+          <label for="cMin"><span data-i18n="c_min">Minutes per time</span><input id="cMin" type="number" inputmode="decimal" min="0" step="1" value="10"></label>
+          <label for="cTimes"><span data-i18n="c_times">Times per day</span><input id="cTimes" type="number" inputmode="decimal" min="0" step="1" value="5"></label>
+          <label for="cRate"><span data-i18n="c_rate">Cost of one hour</span><input id="cRate" type="number" inputmode="decimal" min="0" step="1" value="20"></label>
+          <label for="cCur"><span data-i18n="c_cur">Currency</span>
+            <select id="cCur"><option value="USD">USD $</option><option value="EUR">EUR €</option><option value="BRL">BRL R$</option><option value="GBP">GBP £</option></select></label>
+        </div>
+      </div>
+    </div>
+    <div class="out" aria-live="polite">
+      <div class="big mono" id="oHours" style="font-family:var(--f-display)">208</div>
+      <div class="unit" data-i18n="c_out_h">hours a year</div>
+      <div class="pair">
+        <div><div class="v" id="oWeeks">5.2</div><div class="unit" data-i18n="c_out_w">work weeks</div></div>
+        <div><div class="v" id="oCost">$4,160</div><div class="unit" data-i18n="c_out_c">a year</div></div>
+      </div>
+      <p class="fine" data-i18n="c_note">Illustrative arithmetic: minutes × times a day × 250 working days ÷ 60. Your real numbers will differ.</p>
+      <div style="margin-top:28px"><button class="btn" type="button" id="cSend"><span data-i18n="c_send">Send this to DASON</span> <span aria-hidden="true">→</span></button></div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="m_eyebrow">How we work</div>
+    <h2 data-i18n="m_title">Map it before we build it.</h2>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3 data-i18n="m1_t">Diagnosis</h3><p data-i18n="m1_d">We find the repeated work in your operation and put numbers on it.</p></div>
+      <div class="step"><span class="n">02</span><h3 data-i18n="m2_t">Map</h3><p data-i18n="m2_d">We draw the flow on paper first. You see and approve it before any build.</p></div>
+      <div class="step"><span class="n">03</span><h3 data-i18n="m3_t">Build</h3><p data-i18n="m3_d">Workflows, agents and integrations, tested before they touch your real data.</p></div>
+      <div class="step"><span class="n">04</span><h3 data-i18n="m4_t">Run</h3><p data-i18n="m4_d">We monitor it and adjust as your business changes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="clients">
+  <div class="wrap aud-grid">
+    <div>
+      <div class="eyebrow" data-i18n="a_eyebrow">Who we work with</div>
+      <h2 data-i18n="a_title">Teams that outgrew spreadsheets and copy-paste.</h2>
+      <p class="lead" style="margin-top:22px" data-i18n="a_p">Owners, founders and operations leads, in any industry and at any size, in any country.</p>
+    </div>
+    <div class="aud">
+      <div><b data-i18n="a1">Online stores and marketplaces</b><span data-i18n="a1d">Orders, stock, invoices, customer messages.</span></div>
+      <div><b data-i18n="a2">Agencies and consultancies</b><span data-i18n="a2d">Onboarding, reporting, client updates.</span></div>
+      <div><b data-i18n="a3">Professional services</b><span data-i18n="a3d">Intake forms, scheduling, documents.</span></div>
+      <div><b data-i18n="a4">Operations and logistics</b><span data-i18n="a4d">Tracking, notifications, supplier follow-up.</span></div>
+      <div><b data-i18n="a5">Founders and startups</b><span data-i18n="a5d">The admin that keeps you from building.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="w_eyebrow">Why DASON</div>
+    <h2 data-i18n="w_title">Not another agency.</h2>
+    <div class="why-grid">
+      <article><span class="x">&gt;_</span><h3 data-i18n="w1_t">We start by deleting, not adding.</h3><p data-i18n="w1_d">If a process should be simpler, we simplify it before writing anything.</p></article>
+      <article><span class="x">&gt;_</span><h3 data-i18n="w2_t">We tell you what not to automate.</h3><p data-i18n="w2_d">Some work should stay human. We say so and explain why.</p></article>
+      <article><span class="x">&gt;_</span><h3 data-i18n="w3_t">Numbers with their assumptions.</h3><p data-i18n="w3_d">Every estimate shows the arithmetic behind it. No invented results.</p></article>
+      <article><span class="x">&gt;_</span><h3 data-i18n="w4_t">Built remote, run across time zones.</h3><p data-i18n="w4_d">We work in English, Portuguese and Spanish with clients on any continent.</p></article>
+      <article><span class="x">&gt;_</span><h3 data-i18n="w5_t">Works with what you already use.</h3><p data-i18n="w5_d">We connect your current tools before suggesting new ones.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="global">
+  <div class="wrap glob-grid">
+    <div>
+      <div class="eyebrow" data-i18n="g_eyebrow">Worldwide</div>
+      <h2 data-i18n="g_title">Remote by design. Global by default.</h2>
+      <p class="lead" style="margin-top:22px" data-i18n="g_p">Write to us in English, Portuguese or Spanish, from any time zone. Projects, documentation and support run remotely.</p>
+    </div>
+    <div>
+      <div class="clocks" id="clocks"></div>
+      <p class="clk-hint" data-i18n="g_hint">Local time now · filled square = working hours</p>
+    </div>
+  </div>
+</section>
+
+<section class="pay" id="payments">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="p_eyebrow">Payments</div>
+    <h2 data-i18n="p_title">Pay the way that suits your country.</h2>
+    <p class="lead" style="margin-top:22px" data-i18n="p_sub">Choose your region. Payment details come with each written proposal or invoice. They are never published here.</p>
+
+    <div class="tabs" role="tablist" aria-label="Region">
+      <button role="tab" id="tab-br" aria-selected="false" aria-controls="panel-pay" data-region="br" data-i18n="p_br">Brazil</button>
+      <button role="tab" id="tab-es" aria-selected="false" aria-controls="panel-pay" data-region="es" data-i18n="p_es">Spain</button>
+      <button role="tab" id="tab-int" aria-selected="true" aria-controls="panel-pay" data-region="int" data-i18n="p_int">Rest of the world</button>
+    </div>
+
+    <div id="panel-pay" role="tabpanel" tabindex="0">
+      <div class="methods" data-region-panel="br" hidden>
+        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_card">Credit card</h3><p data-i18n="pm_card_d">Pay by card through a secure payment link sent with your invoice.</p></div>
+        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_pix">Pix</h3><p data-i18n="pm_pix_d">Instant payment, any hour, with a QR code or key on your invoice.</p></div>
+      </div>
+      <div class="methods" data-region-panel="es" hidden>
+        <div class="method"><span class="k">EUR</span><h3 data-i18n="pm_bizum">Bizum</h3><p data-i18n="pm_bizum_d">Instant payment from your Spanish bank app.</p></div>
+        <div class="method"><span class="k">EUR · SEPA</span><h3 data-i18n="pm_bank">Bank transfer</h3><p data-i18n="pm_bank_d">SEPA transfer. The IBAN comes on your invoice.</p></div>
+      </div>
+      <div class="methods" data-region-panel="int">
+        <div class="method"><span class="k">USD · EUR · GBP +</span><h3 data-i18n="pm_wise">Wise</h3><p data-i18n="pm_wise_d">Low-fee international transfer. A payment link or bank details come with your invoice.</p></div>
+        <div class="method"><span class="k">PayPal</span><h3 data-i18n="pm_paypal">PayPal</h3><p data-i18n="pm_paypal_d">Pay with your PayPal balance or card. We send a PayPal invoice or link.</p></div>
+      </div>
+    </div>
+    <p class="safe" data-i18n="p_safe">Pay only to the details on an official DASON proposal or invoice, confirmed by email. We will never ask you to change them by chat message.</p>
+
+    <p class="how-title" data-i18n="p_how">How engaging us works</p>
+    <div class="how">
+      <div><span class="n">01</span><b data-i18n="ps1">Tell us what to automate</b></div>
+      <div><span class="n">02</span><b data-i18n="ps2">Receive a written proposal</b></div>
+      <div><span class="n">03</span><b data-i18n="ps3">Approve, pay your way, and we start</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap ct-grid">
+    <div>
+      <div class="eyebrow" data-i18n="ct_eyebrow">Contact</div>
+      <h2 data-i18n="ct_title">Tell us what repeats in your week.</h2>
+      <p class="lead" style="margin-top:22px" data-i18n="ct_p">We reply to every request. The more detail you give, the better the first answer.</p>
+      <div class="ct-links">
+        <a id="igLink" href="https://www.instagram.com/dasontech/" target="_blank" rel="noopener"><span>Instagram</span><span>@dasontech</span></a>
+        <a id="mailLink" href="#" hidden><span>Email</span><span id="mailText"></span></a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <form id="quoteForm" novalidate>
+        <div class="fields">
+          <label for="fName"><span data-i18n="f_name">Name</span><input id="fName" name="name" type="text" autocomplete="name" required></label>
+          <label for="fEmail"><span data-i18n="f_email">Email</span><input id="fEmail" name="email" type="email" autocomplete="email" required></label>
+          <label for="fCompany"><span data-i18n="f_company">Company</span><input id="fCompany" name="company" type="text" autocomplete="organization"></label>
+          <label for="fCountry"><span data-i18n="f_country">Country</span><input id="fCountry" name="country" type="text" autocomplete="country-name"></label>
+          <label class="full" for="fIg"><span data-i18n="f_ig">Your business Instagram (optional)</span><input id="fIg" name="instagram" type="text" inputmode="text" autocapitalize="none" autocomplete="off" placeholder="@yourbusiness"></label>
+          <label class="full" for="fNeed"><span data-i18n="f_need">What do you want to automate?</span>
+            <select id="fNeed" name="need" required>
+              <option value="" data-i18n="o0">Choose one</option>
+              <option value="AI agent" data-i18n="o1">An AI agent or assistant</option>
+              <option value="Workflow" data-i18n="o2">A workflow between my tools</option>
+              <option value="Integrations" data-i18n="o3">Integrations and data sync</option>
+              <option value="Reports" data-i18n="o4">Automatic reports</option>
+              <option value="Diagnosis" data-i18n="o5">Not sure. I need a diagnosis</option>
+            </select></label>
+          <label class="full" for="fMsg"><span data-i18n="f_msg">Describe the task, how often it repeats and which tools are involved</span><textarea id="fMsg" name="message"></textarea></label>
+          <div class="chips" id="chips"><span class="chips-l" data-i18n="chip_l">Not sure how to explain it? Tap what sounds like you:</span><button type="button" data-chip="1" data-i18n="pr1_q">How do I let my clients book appointments on their own?</button><button type="button" data-chip="2" data-i18n="pr2_q">How do I answer customer messages automatically?</button><button type="button" data-chip="3" data-i18n="pr3_q">How do I organise my orders without losing track of them?</button><button type="button" data-chip="4" data-i18n="pr4_q">How do I send payment reminders automatically?</button><button type="button" data-chip="5" data-i18n="pr5_q">How do I stop losing potential customers and organise my customer service?</button><button type="button" data-chip="6" data-i18n="pr6_q">How do I stop doing everything manually and save time on admin?</button></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="fWeb">Website<input id="fWeb" name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <p class="err" id="fErr" role="alert" hidden data-i18n="f_req">Please fill in name, email and what you want to automate.</p>
+        <button class="btn" type="submit"><span data-i18n="f_send">Send request</span> <span aria-hidden="true">→</span></button>
+        <p class="fine" data-i18n="f_priv">We use your details only to answer your request. Read our <a href="privacy.html">Privacy Policy</a>.</p>
+      </form>
+      <div class="result" id="fResult" hidden>
+        <h3 id="fResTitle" data-i18n="f_ok_t">Your request is ready.</h3>
+        <p class="lead" id="fResText" data-i18n="f_ok_d">Copy it and send it to us in a direct message on Instagram, or by email.</p>
+        <pre id="fPre"></pre>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <button class="btn" type="button" id="fCopy"><span data-i18n="f_copy">Copy request</span></button>
+          <a class="btn ghost" href="https://ig.me/m/dasontech" target="_blank" rel="noopener" data-i18n="f_dm">Open Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="faq_eyebrow">FAQ</div>
+    <h2 data-i18n="faq_title">Questions we get.</h2>
+    <div class="faq">
+      <details><summary data-i18n="q1">What kind of work can you automate?</summary><p data-i18n="a1x">Repetitive work with clear rules: copying data, answering common questions, issuing documents, building reports, moving information between tools.</p></details>
+      <details><summary data-i18n="q2">Do you replace people?</summary><p data-i18n="a2x">No. We remove the repetitive part of the work so people can do the part that needs judgment.</p></details>
+      <details><summary data-i18n="q3">How much does it cost and how long does it take?</summary><p data-i18n="a3x">It depends on the scope. After we understand your process you receive a written proposal with price and deliverables before work begins.</p></details>
+      <details><summary data-i18n="q4">Where are you based and who can hire you?</summary><p data-i18n="a4x">DASON is remote-first and works with companies in any country, in English, Portuguese and Spanish.</p></details>
+      <details><summary data-i18n="q5">Which tools do you work with?</summary><p data-i18n="a5x">With the ones you already use: spreadsheets, email, CRMs, accounting, e-commerce and messaging. We start from your setup.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="DASON">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0,0 H48 A50,50 0 0 1 48,100 H0 Z M24,24 V76 H46 A26,26 0 0 0 46,24 Z" fill="#EDEDEE" fill-rule="evenodd"/><rect x="34" y="38" width="16" height="24" fill="#6E6E75"/></svg>
+      <span>DASON</span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="solutions.html" data-i18n="nav_sol">Solutions</a>
+      <a href="#payments" data-i18n="nav_pay">Payments</a>
+      <a href="#contact" data-i18n="nav_ct">Contact</a>
+      <a href="https://www.instagram.com/dasontech/" target="_blank" rel="noopener">Instagram</a>
+      <a href="privacy.html" data-i18n="ft_priv">Privacy</a>
+      <a href="terms.html" data-i18n="ft_terms">Terms</a>
+    </nav>
+    <p class="small"><span id="yr">2026</span> DASON · AI automation &amp; agents</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- Set these before going live ---- */
+  var CONFIG = {
+    email: "",          // professional email, e.g. hello@yourdomain.com (shown on the page when set)
+    formEndpoint: ""    // a form service URL (Formspree, Basin, Getform...). Empty = visitors copy the request and DM it.
+  };
+
+  var T = {
+  pt:{nav_menu:"Menu",nav_sol:"Soluções",nav_how:"Método",nav_why:"Por que a DASON",nav_pay:"Pagamentos",nav_ct:"Contato",cta_quote:"Solicitar orçamento",
+  h_eyebrow:"Automação e agentes de IA · Mundo todo",h_title:"Apagamos a linha que ninguém cobra.",
+  h_sub:"A DASON cria agentes de IA, fluxos e integrações que tiram o trabalho repetitivo da sua equipe, para que as pessoas usem as horas no que só elas fazem.",
+  h_cta1:"Solicitar orçamento",h_cta2:"Calcule a sua conta invisível",h_meta:"Remoto · Qualquer fuso · English, Português, Español",
+  r_tag:"Exemplo ilustrativo",r_title:"Custo anual do trabalho repetido",r1:"Copiar e-mails para planilha",r1d:"10 min × 5 por dia",r2:"Responder as mesmas perguntas",r2d:"15 min × 4 por dia",r3:"Montar o relatório semanal",r3d:"2 h × 50 semanas",
+  r_total:"Total",r_total_v:"558 horas por ano",r_total_s:"Quase 14 semanas de trabalho.",r_stamp:"Ninguém cobra. Você paga.",r_foot:"A DASON apaga essa linha.",r_note:"250 dias úteis, semanas de 40 h.",
+  s_eyebrow:"Quem somos",s_title:"Uma empresa de tecnologia para o trabalho que ninguém deveria fazer à mão.",
+  s_p1:"A DASON projeta e constrói automação e IA para empresas de qualquer porte. Encontramos o trabalho repetitivo escondido na sua operação, tiramos isso do caminho e deixamos a equipe com dias mais claros e menos erros.",
+  s_p2:"Somos remotos por princípio: uma empresa em São Paulo, Madri ou Dubai recebe o mesmo processo, o mesmo padrão e a mesma atenção.",
+  pr1_t:"Clientes agendam sozinhos",pr1_q:"Como fazer meus clientes agendarem sozinhos?",pr2_t:"Responder mensagens sozinho",pr2_q:"Como responder mensagens de clientes automaticamente?",pr3_t:"Pedidos organizados",pr3_q:"Como organizar os pedidos da minha empresa?",pr4_t:"Lembretes de pagamento",pr4_q:"Como enviar lembretes de pagamento automaticamente?",pr5_t:"Nunca perder um cliente",pr5_q:"Como parar de perder clientes e organizar melhor o atendimento?",pr6_t:"Menos burocracia, mais negócio",pr6_q:"Como parar de fazer tudo manualmente e economizar tempo na administração?",pr_eyebrow:"Comece pelo problema",pr_title:"Sem palavras técnicas. Encontre a situação que parece a sua semana.",pr_diag:"Fazer o diagnóstico de 2 minutos",pr_all:"Ver todas as soluções",pr_more:"Ver como funciona →",nav_diag:"Diagnóstico",chip_l:"Não sabe como explicar? Toque no que parece com você:",
+  sol_eyebrow:"O que construímos",sol_title:"Cinco formas de tirar trabalho da sua equipe.",
+  sol1_t:"Agentes de IA",sol1_d:"Assistentes que leem, decidem dentro das regras que você define e passam os casos difíceis para uma pessoa.",sol1_u:"Dúvidas de clientes · qualificação de leads · suporte interno",
+  sol2_t:"Automação de fluxos",sol2_d:"As etapas repetidas entre as suas ferramentas, rodando sem ninguém clicar.",sol2_u:"Pedidos · notas fiscais · onboarding · aprovações",
+  sol3_t:"Integrações e dados",sol3_d:"Seus sistemas deixam de depender de alguém para redigitar dados entre eles.",sol3_u:"CRM · estoque · contabilidade · e-commerce · planilhas",
+  sol4_t:"Relatórios que se montam sozinhos",sol4_d:"O relatório de segunda se monta sozinho com dados atuais e chega onde a equipe já olha.",sol4_u:"Vendas · operação · financeiro · atualizações para clientes",
+  sol5_t:"Diagnóstico de processos",sol5_d:"Uma análise estruturada de onde as horas vazam, com uma lista ordenada do que vale automatizar primeiro.",sol5_u:"Para equipes que querem um plano antes de decidir",
+  c_eyebrow:"Teste agora",c_title:"Calcule a conta que ninguém te manda.",c_sub:"Escolha uma tarefa que sua equipe repete.",c_min:"Minutos por vez",c_times:"Vezes por dia",c_rate:"Custo de uma hora",c_cur:"Moeda",
+  c_out_h:"horas por ano",c_out_w:"semanas de trabalho",c_out_c:"por ano",c_note:"Aritmética ilustrativa: minutos × vezes por dia × 250 dias úteis ÷ 60. Seus números reais serão diferentes.",c_send:"Enviar para a DASON",
+  m_eyebrow:"Como trabalhamos",m_title:"Mapeamos antes de construir.",
+  m1_t:"Diagnóstico",m1_d:"Encontramos o trabalho repetido na sua operação e colocamos números nele.",
+  m2_t:"Mapa",m2_d:"Desenhamos o fluxo no papel primeiro. Você vê e aprova antes de qualquer construção.",
+  m3_t:"Construção",m3_d:"Fluxos, agentes e integrações, testados antes de tocar nos seus dados reais.",
+  m4_t:"Operação",m4_d:"Acompanhamos e ajustamos conforme o seu negócio muda.",
+  a_eyebrow:"Com quem trabalhamos",a_title:"Equipes que cresceram além das planilhas e do copiar e colar.",a_p:"Donos, fundadores e responsáveis por operações, em qualquer setor, de qualquer porte, em qualquer país.",
+  a1:"Lojas online e marketplaces",a1d:"Pedidos, estoque, notas fiscais, mensagens de clientes.",a2:"Agências e consultorias",a2d:"Onboarding, relatórios, atualizações para clientes.",a3:"Serviços profissionais",a3d:"Formulários de entrada, agenda, documentos.",a4:"Operações e logística",a4d:"Rastreamento, avisos, acompanhamento de fornecedores.",a5:"Fundadores e startups",a5d:"A burocracia que te impede de construir.",
+  w_eyebrow:"Por que a DASON",w_title:"Não é mais uma agência.",
+  w1_t:"Começamos apagando, não acrescentando.",w1_d:"Se um processo deve ser mais simples, nós o simplificamos antes de escrever qualquer coisa.",
+  w2_t:"Dizemos o que não automatizar.",w2_d:"Algum trabalho deve continuar humano. Dizemos isso e explicamos o motivo.",
+  w3_t:"Números com as suas premissas.",w3_d:"Toda estimativa mostra a conta por trás. Sem resultados inventados.",
+  w4_t:"Remotos por princípio, em qualquer fuso.",w4_d:"Trabalhamos em inglês, português e espanhol com clientes em qualquer continente.",
+  w5_t:"Funciona com o que você já usa.",w5_d:"Conectamos as suas ferramentas atuais antes de sugerir novas.",
+  g_eyebrow:"Mundo todo",g_title:"Remotos por princípio. Globais por padrão.",g_p:"Escreva em inglês, português ou espanhol, de qualquer fuso. Projetos, documentação e suporte funcionam à distância.",g_hint:"Hora local agora · quadrado cheio = horário comercial",
+  p_eyebrow:"Pagamentos",p_title:"Pague do jeito que combina com o seu país.",p_sub:"Escolha a sua região. Os dados de pagamento vêm em cada proposta ou fatura. Nunca são publicados aqui.",
+  p_br:"Brasil",p_es:"Espanha",p_int:"Resto do mundo",
+  pm_card:"Cartão de crédito",pm_card_d:"Pague com cartão por um link de pagamento seguro enviado com a fatura.",pm_pix:"Pix",pm_pix_d:"Pagamento instantâneo, a qualquer hora, com QR code ou chave na sua fatura.",
+  pm_bizum:"Bizum",pm_bizum_d:"Pagamento instantâneo pelo app do seu banco espanhol.",pm_bank:"Transferência bancária",pm_bank_d:"Transferência SEPA. O IBAN vai na sua fatura.",
+  pm_wise:"Wise",pm_wise_d:"Transferência internacional com taxas baixas. Um link de pagamento ou os dados bancários vão com a fatura.",pm_paypal:"PayPal",pm_paypal_d:"Pague com saldo ou cartão pelo PayPal. Enviamos uma fatura ou link do PayPal.",
+  p_safe:"Pague apenas para os dados de uma proposta ou fatura oficial da DASON, confirmada por e-mail. Nunca pediremos para mudá-los por mensagem.",
+  p_how:"Como contratar",ps1:"Conte o que automatizar",ps2:"Receba uma proposta por escrito",ps3:"Aprove, pague do seu jeito e começamos",
+  ct_eyebrow:"Contato",ct_title:"Conte o que se repete na sua semana.",ct_p:"Respondemos a todos os pedidos. Quanto mais detalhes, melhor a primeira resposta.",
+  ft_priv:"Privacidade",ft_terms:"Termos",f_ig:"Instagram do seu negócio (opcional)",
+  f_name:"Nome",f_email:"E-mail",f_company:"Empresa",f_country:"País",f_need:"O que você quer automatizar?",o0:"Escolha uma",o1:"Um agente ou assistente de IA",o2:"Um fluxo entre as minhas ferramentas",o3:"Integrações e dados",o4:"Relatórios automáticos",o5:"Não sei. Preciso de um diagnóstico",
+  f_msg:"Descreva a tarefa, a frequência e as ferramentas envolvidas",f_send:"Enviar pedido",f_priv:"Usamos seus dados apenas para responder ao seu pedido. Leia a nossa <a href=\"privacy.html\">Política de Privacidade</a>.",f_req:"Preencha nome, e-mail e o que você quer automatizar.",
+  f_ok_t:"Seu pedido está pronto.",f_ok_d:"Copie e envie para nós por mensagem direta no Instagram ou por e-mail.",f_copy:"Copiar pedido",f_dm:"Abrir o Instagram",
+  faq_eyebrow:"Perguntas",faq_title:"Perguntas frequentes.",
+  q1:"Que tipo de trabalho vocês automatizam?",a1x:"Trabalho repetitivo com regras claras: copiar dados, responder dúvidas comuns, emitir documentos, montar relatórios, mover informação entre ferramentas.",
+  q2:"Vocês substituem pessoas?",a2x:"Não. Tiramos a parte repetitiva do trabalho para que as pessoas façam a parte que exige julgamento.",
+  q3:"Quanto custa e quanto tempo leva?",a3x:"Depende do escopo. Depois de entender o seu processo, você recebe uma proposta escrita com preço e entregas antes de o trabalho começar.",
+  q4:"Onde vocês ficam e quem pode contratar?",a4x:"A DASON é remota e trabalha com empresas de qualquer país, em inglês, português e espanhol.",
+  q5:"Com quais ferramentas vocês trabalham?",a5x:"Com as que você já usa: planilhas, e-mail, CRMs, contabilidade, e-commerce e mensagens. Partimos do que você tem."},
+  es:{nav_menu:"Menú",nav_sol:"Soluciones",nav_how:"Método",nav_why:"Por qué DASON",nav_pay:"Pagos",nav_ct:"Contacto",cta_quote:"Pedir presupuesto",
+  h_eyebrow:"Automatización y agentes de IA · En todo el mundo",h_title:"Borramos la línea que nadie factura.",
+  h_sub:"DASON crea agentes de IA, flujos e integraciones que quitan el trabajo repetitivo a tu equipo, para que las personas dediquen sus horas a lo que solo ellas pueden hacer.",
+  h_cta1:"Pedir presupuesto",h_cta2:"Calcula tu factura invisible",h_meta:"Remoto · Cualquier huso horario · English, Português, Español",
+  r_tag:"Ejemplo ilustrativo",r_title:"Coste anual del trabajo repetido",r1:"Copiar emails a una hoja",r1d:"10 min × 5 al día",r2:"Responder las mismas preguntas",r2d:"15 min × 4 al día",r3:"Montar el informe semanal",r3d:"2 h × 50 semanas",
+  r_total:"Total",r_total_v:"558 horas al año",r_total_s:"Casi 14 semanas de trabajo.",r_stamp:"Nadie lo factura. Lo pagas.",r_foot:"DASON borra esa línea.",r_note:"250 días laborables, semanas de 40 h.",
+  s_eyebrow:"Quiénes somos",s_title:"Una empresa de tecnología para el trabajo que nadie debería hacer a mano.",
+  s_p1:"DASON diseña y construye automatización e IA para empresas de cualquier tamaño. Encontramos el trabajo repetitivo escondido en tu operación, lo eliminamos y dejamos a tu equipo con días más claros y menos errores.",
+  s_p2:"Somos remotos por diseño: una empresa en São Paulo, Madrid o Dubái recibe el mismo proceso, el mismo estándar y la misma atención.",
+  pr1_t:"Los clientes reservan solos",pr1_q:"¿Cómo hago que mis clientes reserven cita por su cuenta?",pr2_t:"Responder mensajes solo",pr2_q:"¿Cómo respondo automáticamente a los mensajes de mis clientes?",pr3_t:"Pedidos organizados",pr3_q:"¿Cómo organizo los pedidos de mi empresa?",pr4_t:"Recordatorios de pago",pr4_q:"¿Cómo envío recordatorios de pago automáticamente?",pr5_t:"No perder ningún cliente",pr5_q:"¿Cómo dejo de perder clientes potenciales y organizo mejor la atención?",pr6_t:"Menos administración, más negocio",pr6_q:"¿Cómo dejo de hacerlo todo a mano y ahorro tiempo en la administración?",pr_eyebrow:"Empieza por el problema",pr_title:"Sin palabras técnicas. Encuentra la situación que se parece a tu semana.",pr_diag:"Hacer el diagnóstico de 2 minutos",pr_all:"Ver todas las soluciones",pr_more:"Ver cómo funciona →",nav_diag:"Diagnóstico",chip_l:"¿No sabes cómo explicarlo? Toca lo que se parezca a ti:",
+  sol_eyebrow:"Qué construimos",sol_title:"Cinco formas de quitar trabajo a tu equipo.",
+  sol1_t:"Agentes de IA",sol1_d:"Asistentes que leen, deciden dentro de las reglas que defines y pasan los casos difíciles a una persona.",sol1_u:"Dudas de clientes · cualificación de leads · soporte interno",
+  sol2_t:"Automatización de flujos",sol2_d:"Los pasos repetidos entre tus herramientas, funcionando sin que nadie haga clic.",sol2_u:"Pedidos · facturas · onboarding · aprobaciones",
+  sol3_t:"Integraciones y datos",sol3_d:"Tus sistemas dejan de depender de alguien que reescriba datos entre ellos.",sol3_u:"CRM · stock · contabilidad · e-commerce · hojas de cálculo",
+  sol4_t:"Informes que se montan solos",sol4_d:"El informe del lunes se monta solo con datos actuales y llega donde tu equipo ya mira.",sol4_u:"Ventas · operaciones · finanzas · avisos a clientes",
+  sol5_t:"Diagnóstico de procesos",sol5_d:"Un análisis estructurado de dónde se pierden las horas, con una lista ordenada de lo que conviene automatizar primero.",sol5_u:"Para equipos que quieren un plan antes de decidir",
+  c_eyebrow:"Pruébalo",c_title:"Calcula la factura que nadie te envía.",c_sub:"Elige una tarea que tu equipo repite.",c_min:"Minutos por vez",c_times:"Veces al día",c_rate:"Coste de una hora",c_cur:"Moneda",
+  c_out_h:"horas al año",c_out_w:"semanas de trabajo",c_out_c:"al año",c_note:"Aritmética ilustrativa: minutos × veces al día × 250 días laborables ÷ 60. Tus números reales serán distintos.",c_send:"Enviar a DASON",
+  m_eyebrow:"Cómo trabajamos",m_title:"Lo mapeamos antes de construirlo.",
+  m1_t:"Diagnóstico",m1_d:"Encontramos el trabajo repetido en tu operación y le ponemos números.",
+  m2_t:"Mapa",m2_d:"Dibujamos el flujo en papel primero. Lo ves y lo apruebas antes de construir nada.",
+  m3_t:"Construcción",m3_d:"Flujos, agentes e integraciones, probados antes de tocar tus datos reales.",
+  m4_t:"Operación",m4_d:"Lo supervisamos y lo ajustamos a medida que tu negocio cambia.",
+  a_eyebrow:"Con quién trabajamos",a_title:"Equipos que superaron las hojas de cálculo y el copiar y pegar.",a_p:"Dueños, fundadores y responsables de operaciones, de cualquier sector y tamaño, en cualquier país.",
+  a1:"Tiendas online y marketplaces",a1d:"Pedidos, stock, facturas, mensajes de clientes.",a2:"Agencias y consultoras",a2d:"Onboarding, informes, avisos a clientes.",a3:"Servicios profesionales",a3d:"Formularios de entrada, agenda, documentos.",a4:"Operaciones y logística",a4d:"Seguimiento, avisos, gestión de proveedores.",a5:"Fundadores y startups",a5d:"La administración que te impide construir.",
+  w_eyebrow:"Por qué DASON",w_title:"No somos otra agencia.",
+  w1_t:"Empezamos borrando, no añadiendo.",w1_d:"Si un proceso debe ser más simple, lo simplificamos antes de escribir nada.",
+  w2_t:"Te decimos qué no automatizar.",w2_d:"Algunas tareas deben seguir siendo humanas. Lo decimos y explicamos por qué.",
+  w3_t:"Números con sus supuestos.",w3_d:"Cada estimación muestra la cuenta que hay detrás. Sin resultados inventados.",
+  w4_t:"Remotos por diseño, en cualquier huso horario.",w4_d:"Trabajamos en inglés, portugués y español con clientes de cualquier continente.",
+  w5_t:"Funciona con lo que ya usas.",w5_d:"Conectamos tus herramientas actuales antes de sugerir nuevas.",
+  g_eyebrow:"En todo el mundo",g_title:"Remotos por diseño. Globales por defecto.",g_p:"Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.",g_hint:"Hora local ahora · cuadro lleno = horario laboral",
+  p_eyebrow:"Pagos",p_title:"Paga como mejor encaje en tu país.",p_sub:"Elige tu región. Los datos de pago llegan con cada propuesta o factura. Nunca se publican aquí.",
+  p_br:"Brasil",p_es:"España",p_int:"Resto del mundo",
+  pm_card:"Tarjeta de crédito",pm_card_d:"Paga con tarjeta mediante un enlace de pago seguro enviado con la factura.",pm_pix:"Pix",pm_pix_d:"Pago instantáneo, a cualquier hora, con código QR o clave en tu factura.",
+  pm_bizum:"Bizum",pm_bizum_d:"Pago instantáneo desde la app de tu banco español.",pm_bank:"Transferencia bancaria",pm_bank_d:"Transferencia SEPA. El IBAN va en tu factura.",
+  pm_wise:"Wise",pm_wise_d:"Transferencia internacional con comisiones bajas. Un enlace de pago o los datos bancarios llegan con la factura.",pm_paypal:"PayPal",pm_paypal_d:"Paga con tu saldo o tarjeta de PayPal. Enviamos una factura o enlace de PayPal.",
+  p_safe:"Paga solo a los datos de una propuesta o factura oficial de DASON, confirmada por email. Nunca te pediremos cambiarlos por mensaje.",
+  p_how:"Cómo contratarnos",ps1:"Cuéntanos qué automatizar",ps2:"Recibe una propuesta por escrito",ps3:"Aprueba, paga a tu manera y empezamos",
+  ct_eyebrow:"Contacto",ct_title:"Cuéntanos qué se repite en tu semana.",ct_p:"Respondemos a todas las solicitudes. Cuantos más detalles, mejor la primera respuesta.",
+  ft_priv:"Privacidad",ft_terms:"Términos",f_ig:"Instagram de tu negocio (opcional)",
+  f_name:"Nombre",f_email:"Email",f_company:"Empresa",f_country:"País",f_need:"¿Qué quieres automatizar?",o0:"Elige una",o1:"Un agente o asistente de IA",o2:"Un flujo entre mis herramientas",o3:"Integraciones y datos",o4:"Informes automáticos",o5:"No lo sé. Necesito un diagnóstico",
+  f_msg:"Describe la tarea, la frecuencia y las herramientas implicadas",f_send:"Enviar solicitud",f_priv:"Usamos tus datos solo para responder a tu solicitud. Lee nuestra <a href=\"privacy.html\">Política de Privacidad</a>.",f_req:"Rellena nombre, email y qué quieres automatizar.",
+  f_ok_t:"Tu solicitud está lista.",f_ok_d:"Cópiala y envíanosla por mensaje directo en Instagram o por email.",f_copy:"Copiar solicitud",f_dm:"Abrir Instagram",
+  faq_eyebrow:"Preguntas",faq_title:"Preguntas frecuentes.",
+  q1:"¿Qué tipo de trabajo automatizáis?",a1x:"Trabajo repetitivo con reglas claras: copiar datos, responder dudas comunes, emitir documentos, montar informes, mover información entre herramientas.",
+  q2:"¿Sustituís a las personas?",a2x:"No. Quitamos la parte repetitiva para que las personas hagan la que requiere criterio.",
+  q3:"¿Cuánto cuesta y cuánto tarda?",a3x:"Depende del alcance. Tras entender tu proceso recibes una propuesta escrita con precio y entregables antes de empezar.",
+  q4:"¿Dónde estáis y quién puede contratarnos?",a4x:"DASON es remota y trabaja con empresas de cualquier país, en inglés, portugués y español.",
+  q5:"¿Con qué herramientas trabajáis?",a5x:"Con las que ya usas: hojas de cálculo, email, CRM, contabilidad, e-commerce y mensajería. Partimos de lo que tienes."}
+  };
+  var COPY = {en:{copied:"Copied",req:"Request",lines:["Name","Email","Company","Country","Instagram","Needs","Message"]},pt:{copied:"Copiado",req:"Pedido",lines:["Nome","E-mail","Empresa","País","Instagram","Necessidade","Mensagem"]},es:{copied:"Copiado",req:"Solicitud",lines:["Nombre","Email","Empresa","País","Instagram","Necesidad","Mensaje"]},
+    sent:{en:["Thank you. Your request was sent.","We will reply by email."],pt:["Obrigado. Seu pedido foi enviado.","Responderemos por e-mail."],es:["Gracias. Tu solicitud fue enviada.","Responderemos por email."]},
+    calcMsg:{en:function(a){return "Calculation: "+a.min+" min × "+a.times+" a day = "+a.h+" hours a year ("+a.w+" work weeks, about "+a.c+" a year)."},
+             pt:function(a){return "Cálculo: "+a.min+" min × "+a.times+" por dia = "+a.h+" horas por ano ("+a.w+" semanas de trabalho, cerca de "+a.c+" por ano)."},
+             es:function(a){return "Cálculo: "+a.min+" min × "+a.times+" al día = "+a.h+" horas al año ("+a.w+" semanas de trabajo, unos "+a.c+" al año)."}}};
+  var LOC = {en:"en-US",pt:"pt-BR",es:"es-ES"};
+  var lang = "en";
+
+  var nodes = document.querySelectorAll("[data-i18n]");
+  nodes.forEach(function(el){ el.setAttribute("data-en", el.innerHTML); });
+
+  function setLang(l){
+    lang = (l==="pt"||l==="es")?l:"en";
+    nodes.forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      el.innerHTML = (lang==="en") ? el.getAttribute("data-en") : (T[lang][k] || el.getAttribute("data-en"));
+    });
+    document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-lang")===lang)); });
+    try{ document.documentElement.setAttribute("lang", lang); }catch(e){}
+    try{ localStorage.setItem("dason-lang", lang); }catch(e){}
+    calc();
+  }
+
+  /* language: saved choice, else browser language */
+  var saved = null; try{ saved = localStorage.getItem("dason-lang"); }catch(e){}
+  var nav = (navigator.language||"en").slice(0,2).toLowerCase();
+  var start = saved || (nav==="pt"||nav==="es" ? nav : "en");
+  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); }); });
+
+  /* mobile menu */
+  var menuBtn = document.getElementById("menuBtn"), mainNav = document.getElementById("mainNav");
+  menuBtn.addEventListener("click", function(){ var o = mainNav.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", String(o)); });
+  mainNav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ mainNav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }); });
+
+  /* calculator */
+  var $ = function(id){ return document.getElementById(id); };
+  function num(v){ var n = parseFloat(String(v).replace(",",".")); return isFinite(n)&&n>0 ? n : 0; }
+  var last = {};
+  function calc(){
+    var min = num($("cMin").value), times = num($("cTimes").value), rate = num($("cRate").value), cur = $("cCur").value;
+    var hours = Math.round(min*times*250/60), weeks = hours/40, cost = hours*rate, loc = LOC[lang];
+    var nf0 = new Intl.NumberFormat(loc,{maximumFractionDigits:0}), nf1 = new Intl.NumberFormat(loc,{maximumFractionDigits:1});
+    var money = new Intl.NumberFormat(loc,{style:"currency",currency:cur,maximumFractionDigits:0});
+    $("oHours").textContent = nf0.format(Math.round(hours));
+    $("oWeeks").textContent = nf1.format(weeks);
+    $("oCost").textContent = money.format(cost);
+    last = {min:nf0.format(min),times:nf0.format(times),h:nf0.format(Math.round(hours)),w:nf1.format(weeks),c:money.format(cost)};
+  }
+  ["cMin","cTimes","cRate","cCur"].forEach(function(id){ $(id).addEventListener("input", calc); $(id).addEventListener("change", calc); });
+  $("cSend").addEventListener("click", function(){
+    var m = $("fMsg"); var line = COPY.calcMsg[lang](last);
+    m.value = m.value ? (m.value+"\n\n"+line) : line;
+    $("contact").scrollIntoView({behavior:"smooth",block:"start"});
+    setTimeout(function(){ try{ $("fName").focus({preventScroll:true}); }catch(e){} }, 600);
+  });
+
+  /* clocks */
+  var ZONES = [["Madrid","Europe/Madrid"],["São Paulo","America/Sao_Paulo"],["New York","America/New_York"],["London","Europe/London"],["Dubai","Asia/Dubai"],["Singapore","Asia/Singapore"]];
+  var clocksEl = $("clocks");
+  function renderClocks(){
+    var now = new Date(), html = "";
+    ZONES.forEach(function(z){
+      var parts = new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:z[1]}).formatToParts(now);
+      var h = 0, mi = "00"; parts.forEach(function(p){ if(p.type==="hour") h = parseInt(p.value,10)%24; if(p.type==="minute") mi = p.value; });
+      var on = h>=9 && h<18;
+      html += '<div class="clock'+(on?' on':'')+'"><div class="c">'+z[0]+'</div><div class="t">'+String(h).padStart(2,"0")+':'+mi+'</div><div class="o"><i></i><span>'+(on?"09–18":"18–09")+'</span></div></div>';
+    });
+    clocksEl.innerHTML = html;
+  }
+  renderClocks(); setInterval(renderClocks, 30000);
+
+  /* payments: region tabs, auto-picked from the visitor's time zone */
+  var tabs = document.querySelectorAll(".tabs [role=tab]"), panels = document.querySelectorAll("[data-region-panel]");
+  function region(r){
+    tabs.forEach(function(t){ t.setAttribute("aria-selected", String(t.getAttribute("data-region")===r)); });
+    panels.forEach(function(p){ p.hidden = p.getAttribute("data-region-panel")!==r; });
+  }
+  tabs.forEach(function(t){ t.addEventListener("click", function(){ region(t.getAttribute("data-region")); }); });
+  var tz = ""; try{ tz = Intl.DateTimeFormat().resolvedOptions().timeZone||""; }catch(e){}
+  var guess = /^America\/(Sao_Paulo|Bahia|Fortaleza|Recife|Manaus|Belem|Cuiaba|Campo_Grande|Porto_Velho|Rio_Branco|Noronha|Araguaina|Maceio|Santarem|Boa_Vista|Eirunepe)$/.test(tz) ? "br" : (/^(Europe\/Madrid|Africa\/Ceuta|Atlantic\/Canary)$/.test(tz) ? "es" : "int");
+  region(guess);
+
+  /* contact details */
+  if(CONFIG.email){ var ml = $("mailLink"); ml.hidden = false; ml.href = "mailto:"+CONFIG.email; $("mailText").textContent = CONFIG.email; }
+
+  /* form */
+  var form = $("quoteForm");
+  function summary(d){
+    var L = COPY[lang].lines;
+    return [COPY[lang].req+" · DASON", L[0]+": "+d.name, L[1]+": "+d.email, L[2]+": "+(d.company||"-"), L[3]+": "+(d.country||"-"), L[4]+": "+(d.instagram||"-"), L[5]+": "+d.needText, L[6]+": "+(d.message||"-")].join("\n");
+  }
+  (function(){
+    try{
+      var raw=localStorage.getItem("dason-diag");
+      if(raw){var o=JSON.parse(raw); localStorage.removeItem("dason-diag");
+        if(o.need){$("fNeed").value=o.need;}
+        if(o.msg){$("fMsg").value=o.msg;}}
+    }catch(e){}
+    document.querySelectorAll("#chips button").forEach(function(b){b.addEventListener("click",function(){
+      var t=$("fMsg"); t.value=(t.value?t.value+"\n":"")+b.textContent; t.focus();
+    });});
+  })();
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var sel = $("fNeed");
+    var d = {name:$("fName").value.trim(), email:$("fEmail").value.trim(), company:$("fCompany").value.trim(), country:$("fCountry").value.trim(), instagram:$("fIg").value.trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,"@").replace(/^@?/,"@").replace(/\/$/,"").replace(/^@$/,""), need:sel.value, needText:sel.value?sel.options[sel.selectedIndex].text:"", message:$("fMsg").value.trim(), website:$("fWeb").value, lang:lang};
+    var ok = d.name && /^\S+@\S+\.\S+$/.test(d.email) && d.need;
+    $("fErr").hidden = !!ok;
+    if(!ok) return;
+    if(d.website) return;                     /* honeypot */
+    var resBox = $("fResult");
+    function showCopy(){
+      form.hidden = true; resBox.hidden = false; $("fPre").textContent = summary(d);
+      resBox.scrollIntoView({behavior:"smooth",block:"nearest"});
+    }
+    if(CONFIG.formEndpoint){
+      fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(d)})
+        .then(function(r){ if(!r.ok) throw new Error("bad"); form.hidden = true; resBox.hidden = false;
+          $("fResTitle").textContent = COPY.sent[lang][0]; $("fResText").textContent = COPY.sent[lang][1]; $("fPre").hidden = true; $("fCopy").hidden = true; })
+        .catch(showCopy);
+    } else { showCopy(); }
+  });
+  $("fCopy").addEventListener("click", function(){
+    var txt = $("fPre").textContent, btn = this, label = btn.firstElementChild, old = label.textContent;
+    function done(){ label.textContent = COPY[lang].copied; setTimeout(function(){ label.textContent = old; }, 1600); }
+    try{ navigator.clipboard.writeText(txt).then(done, function(){ sel(); }); }catch(e){ sel(); }
+    function sel(){ var r = document.createRange(); r.selectNodeContents($("fPre")); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  });
+
+  $("yr").textContent = "© " + new Date().getFullYear();
+  setLang(start);
+})();
+</script>
+
+</body>
+</html>

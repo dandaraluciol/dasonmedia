@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Business problem diagnostic | DASON</title>
+<meta name="description" content="Tick the situations that sound like your week and see which automation solutions fit. No technical knowledge needed.">
+<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/diagnostic.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="DASON"><meta property="og:title" content="Business problem diagnostic | DASON"><meta property="og:description" content="Tick the situations that sound like your week and see which automation solutions fit. No technical knowledge needed."><meta property="og:url" content="https://dandaraluciol.github.io/dasonmedia/diagnostic.html"><meta property="og:image" content="https://dandaraluciol.github.io/dasonmedia/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#09090A">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@700;800&display=swap">
+
+<style>
+:root{--bg:#09090A;--panel:#131315;--line:#27272B;--line2:#3A3A40;--text:#EDEDEE;--mid:#A4A4AB;--dim:#6E6E75;--ink:#09090A;
+--f-display:"Montserrat","Helvetica Neue",Arial,sans-serif;--f-body:"Inter","Helvetica Neue",Arial,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+--gl:max(20px,env(safe-area-inset-left,0px));--gr:max(20px,env(safe-area-inset-right,0px));color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.7 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--text)}
+.wrap{width:100%;max-width:820px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px;max-width:1240px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:800 20px var(--f-display);letter-spacing:.22em}
+.brand svg{width:30px;height:30px}
+.lang{display:flex;border:1px solid var(--line2)}
+.lang button{all:unset;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.1em;padding:7px 9px;color:var(--mid)}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.lang button:focus-visible,a:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+main{padding-block:clamp(40px,8vw,88px) 96px}
+.back{font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+h1{font:800 clamp(2.2rem,6vw,3.6rem)/1.05 var(--f-display);letter-spacing:-.04em;margin:22px 0 10px}
+.upd{font:400 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 36px}
+h2{font:700 1.25rem/1.3 var(--f-display);letter-spacing:-.02em;margin:40px 0 10px}
+p{margin:0 0 14px;color:var(--mid)}
+.todo{background:transparent;color:var(--text);outline:1px dashed var(--mid);outline-offset:2px;padding:0 3px}
+.draft{border:1px dashed var(--line2);padding:14px 16px;margin:0 0 32px;color:var(--mid);font:400 13px/1.6 var(--f-mono)}
+footer{border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));font:400 12px var(--f-mono);color:var(--dim)}
+footer a{color:var(--mid)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.wrap{max-width:1000px}
+nav.top{display:flex;align-items:center;gap:22px}
+nav.top a{font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mid);text-decoration:none}
+nav.top a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--text);color:var(--ink)!important;font:600 13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:15px 24px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text)!important;border:1px solid var(--line2)}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin:0 0 14px}
+.lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--text);max-width:46em;margin:0 0 28px}
+.story{border-left:2px solid var(--line2);padding:4px 0 4px 20px;margin:0 0 8px;color:var(--text);max-width:46em}
+.note{font:400 12px var(--f-mono);color:var(--dim);margin:0 0 40px}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin:0 0 12px}
+.grid>*{background:var(--bg);padding:22px;min-width:0}
+.grid h3{font:700 1.05rem var(--f-display);margin:0 0 8px;letter-spacing:-.01em}
+.grid p{margin:0;font-size:.95rem}
+.grid .n{font:500 12px var(--f-mono);color:var(--dim);display:block;margin-bottom:10px}
+a.card{display:block;text-decoration:none;color:var(--text)}
+a.card:hover{background:var(--panel)}
+a.card .q{display:block;font:600 .85rem var(--f-mono);letter-spacing:.04em;color:var(--mid);margin-top:12px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font:600 1rem var(--f-body);color:var(--text)}
+details p{margin:10px 0 0}
+.cta{border:1px solid var(--line2);padding:clamp(24px,5vw,44px);margin:56px 0 20px}
+.cta h2{margin-top:0}
+.row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:20px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);margin:0 0 8px;cursor:pointer;color:var(--text)}
+.chk input{margin-top:5px;accent-color:#EDEDEE;width:18px;height:18px;flex:none}
+.chk:has(input:checked){border-color:var(--text);background:var(--panel)}
+#res{margin-top:28px}
+.tools{font:400 12px var(--f-mono);color:var(--dim);margin-top:14px}
+.ham{display:none}
+@media (max-width:760px){nav.top a.hide{display:none}header .wrap{height:auto;padding-block:12px;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header><div class="wrap" style="max-width:1000px">
+<a class="brand" href="index.html" aria-label="DASON"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0,0 H48 A50,50 0 0 1 48,100 H0 Z M24,24 V76 H46 A26,26 0 0 0 46,24 Z" fill="#EDEDEE" fill-rule="evenodd"/><rect x="34" y="38" width="16" height="24" fill="#6E6E75"/></svg><span>DASON</span></a>
+<nav class="top" aria-label="Main"><a href="solutions.html" class="hide"><span data-lang="en">Solutions</span><span data-lang="pt" hidden>Soluções</span><span data-lang="es" hidden>Soluciones</span></a><a href="diagnostic.html" class="hide"><span data-lang="en">Diagnostic</span><span data-lang="pt" hidden>Diagnóstico</span><span data-lang="es" hidden>Diagnóstico</span></a><a class="btn" href="index.html#contact" style="padding:10px 14px;font-size:11px"><span data-lang="en">Request a quote</span><span data-lang="pt" hidden>Solicitar orçamento</span><span data-lang="es" hidden>Pedir presupuesto</span></a></nav>
+<div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="pt" aria-pressed="false">PT</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
+</div></header>
+<main><div class="wrap">
+<p class="eyebrow"><span data-lang="en">Diagnostic</span><span data-lang="pt" hidden>Diagnóstico</span><span data-lang="es" hidden>Diagnóstico</span></p><h1><span data-lang="en">What is slowing your business down?</span><span data-lang="pt" hidden>O que está atrasando o seu negócio?</span><span data-lang="es" hidden>¿Qué está frenando tu negocio?</span></h1><p class="lead"><span data-lang="en">Tick everything that sounds like you. We will show what fits and prepare your quote request.</span><span data-lang="pt" hidden>Marque tudo o que parece com você. Mostramos o que serve e preparamos o seu pedido de orçamento.</span><span data-lang="es" hidden>Marca todo lo que se parezca a ti. Mostramos lo que encaja y preparamos tu solicitud de presupuesto.</span></p>
+<div><label class="chk"><input type="checkbox" value="d1" data-sol="automatic-appointment-booking" data-en="My clients message me back and forth to find a time"><span><span data-lang="en">My clients message me back and forth to find a time</span><span data-lang="pt" hidden>Meus clientes trocam mensagens comigo para achar um horário</span><span data-lang="es" hidden>Mis clientes me escriben de ida y vuelta para encontrar hora</span></span></label><label class="chk"><input type="checkbox" value="d2" data-sol="automatic-appointment-booking" data-en="People miss appointments because nobody reminds them"><span><span data-lang="en">People miss appointments because nobody reminds them</span><span data-lang="pt" hidden>As pessoas faltam porque ninguém lembra</span><span data-lang="es" hidden>La gente falta a las citas porque nadie se lo recuerda</span></span></label><label class="chk"><input type="checkbox" value="d3" data-sol="automatic-customer-replies" data-en="I answer the same questions all day"><span><span data-lang="en">I answer the same questions all day</span><span data-lang="pt" hidden>Respondo as mesmas perguntas o dia inteiro</span><span data-lang="es" hidden>Respondo las mismas preguntas todo el día</span></span></label><label class="chk"><input type="checkbox" value="d4" data-sol="automatic-customer-replies" data-en="Messages sent at night wait until morning"><span><span data-lang="en">Messages sent at night wait until morning</span><span data-lang="pt" hidden>Mensagens da noite esperam até de manhã</span><span data-lang="es" hidden>Los mensajes de la noche esperan hasta la mañana</span></span></label><label class="chk"><input type="checkbox" value="d5" data-sol="order-management-automation" data-en="Orders arrive by chat, email and the shop and get mixed up"><span><span data-lang="en">Orders arrive by chat, email and the shop and get mixed up</span><span data-lang="pt" hidden>Pedidos chegam por chat, e-mail e loja e se misturam</span><span data-lang="es" hidden>Los pedidos llegan por chat, email y tienda y se mezclan</span></span></label><label class="chk"><input type="checkbox" value="d6" data-sol="order-management-automation" data-en="I retype the same order data in more than one place"><span><span data-lang="en">I retype the same order data in more than one place</span><span data-lang="pt" hidden>Redigito os dados do pedido em mais de um lugar</span><span data-lang="es" hidden>Reescribo los datos del pedido en más de un sitio</span></span></label><label class="chk"><input type="checkbox" value="d7" data-sol="automatic-payment-reminders" data-en="I hesitate to chase clients who have not paid"><span><span data-lang="en">I hesitate to chase clients who have not paid</span><span data-lang="pt" hidden>Hesito em cobrar clientes que não pagaram</span><span data-lang="es" hidden>Dudo en reclamar a los clientes que no han pagado</span></span></label><label class="chk"><input type="checkbox" value="d8" data-sol="automatic-payment-reminders" data-en="I search my invoices at month end to see who is late"><span><span data-lang="en">I search my invoices at month end to see who is late</span><span data-lang="pt" hidden>Procuro nas faturas no fim do mês quem está atrasado</span><span data-lang="es" hidden>Reviso las facturas a fin de mes para ver quién se retrasa</span></span></label><label class="chk"><input type="checkbox" value="d9" data-sol="lead-follow-up-automation" data-en="Potential customers ask for a quote and I never get back to them in time"><span><span data-lang="en">Potential customers ask for a quote and I never get back to them in time</span><span data-lang="pt" hidden>Interessados pedem orçamento e eu não retorno a tempo</span><span data-lang="es" hidden>Interesados piden presupuesto y no les respondo a tiempo</span></span></label><label class="chk"><input type="checkbox" value="d10" data-sol="lead-follow-up-automation" data-en="I do not know who is waiting for a reply"><span><span data-lang="en">I do not know who is waiting for a reply</span><span data-lang="pt" hidden>Não sei quem está esperando resposta</span><span data-lang="es" hidden>No sé quién está esperando respuesta</span></span></label><label class="chk"><input type="checkbox" value="d11" data-sol="save-time-on-admin-work" data-en="I build the same report by hand every week"><span><span data-lang="en">I build the same report by hand every week</span><span data-lang="pt" hidden>Monto o mesmo relatório à mão toda semana</span><span data-lang="es" hidden>Preparo el mismo informe a mano cada semana</span></span></label><label class="chk"><input type="checkbox" value="d12" data-sol="save-time-on-admin-work" data-en="I copy data from one tool to another"><span><span data-lang="en">I copy data from one tool to another</span><span data-lang="pt" hidden>Copio dados de uma ferramenta para outra</span><span data-lang="es" hidden>Copio datos de una herramienta a otra</span></span></label></div>
+<div class="row"><button type="button" class="btn" id="go"><span data-lang="en">Show me what fits</span><span data-lang="pt" hidden>Mostrar o que serve</span><span data-lang="es" hidden>Mostrar lo que encaja</span></button></div>
+<div id="res" aria-live="polite"></div>
+</div></main>
+<footer><div class="wrap" style="max-width:1000px">© <span id="yr">2026</span> DASON · <a href="index.html">Home</a> · <a href="solutions.html">Solutions</a> · <a href="diagnostic.html">Diagnostic</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div></footer>
+<script>
+(function(){
+  var saved=null; try{saved=localStorage.getItem("dason-lang");}catch(e){}
+  var nav=(navigator.language||"en").slice(0,2).toLowerCase();
+  function set(l){
+    if(l!=="pt"&&l!=="es") l="en";
+    document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===l));});
+    document.querySelectorAll("[data-lang]:not(button)").forEach(function(d){d.hidden=d.getAttribute("data-lang")!==l;});
+    document.documentElement.lang=l; try{localStorage.setItem("dason-lang",l);}catch(e){}
+    document.dispatchEvent(new CustomEvent("dason-lang",{detail:l}));
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){set(b.getAttribute("data-lang"));});});
+  document.querySelectorAll("a[data-need]").forEach(function(a){a.addEventListener("click",function(){
+    try{localStorage.setItem("dason-diag",JSON.stringify({need:a.getAttribute("data-need"),msg:a.getAttribute("data-msg")||""}));}catch(e){}
+  });});
+  document.getElementById("yr").textContent=new Date().getFullYear();
+  window.__setLang=set;
+  set(saved||(nav==="pt"||nav==="es"?nav:"en"));
+})();
+</script>
+<script>
+(function(){
+  var META={"automatic-appointment-booking": {"need": "Workflow", "name": {"en": "Clients book themselves", "pt": "Clientes agendam sozinhos", "es": "Los clientes reservan solos"}, "q": {"en": "How do I let my clients book appointments on their own?", "pt": "Como fazer meus clientes agendarem sozinhos?", "es": "¿Cómo hago que mis clientes reserven cita por su cuenta?"}}, "automatic-customer-replies": {"need": "AI agent", "name": {"en": "Answer messages automatically", "pt": "Responder mensagens sozinho", "es": "Responder mensajes solo"}, "q": {"en": "How do I answer customer messages automatically?", "pt": "Como responder mensagens de clientes automaticamente?", "es": "¿Cómo respondo automáticamente a los mensajes de mis clientes?"}}, "order-management-automation": {"need": "Workflow", "name": {"en": "Orders organised for you", "pt": "Pedidos organizados", "es": "Pedidos organizados"}, "q": {"en": "How do I organise my orders without losing track of them?", "pt": "Como organizar os pedidos da minha empresa?", "es": "¿Cómo organizo los pedidos de mi empresa?"}}, "automatic-payment-reminders": {"need": "Workflow", "name": {"en": "Payment reminders on autopilot", "pt": "Lembretes de pagamento", "es": "Recordatorios de pago"}, "q": {"en": "How do I send payment reminders automatically?", "pt": "Como enviar lembretes de pagamento automaticamente?", "es": "¿Cómo envío recordatorios de pago automáticamente?"}}, "lead-follow-up-automation": {"need": "AI agent", "name": {"en": "Never lose a lead", "pt": "Nunca perder um cliente", "es": "No perder ningún cliente"}, "q": {"en": "How do I stop losing potential customers and organise my customer service?", "pt": "Como parar de perder clientes e organizar melhor o atendimento?", "es": "¿Cómo dejo de perder clientes potenciales y organizo mejor la atención?"}}, "save-time-on-admin-work": {"need": "Reports", "name": {"en": "Less admin, more business", "pt": "Menos burocracia, mais negócio", "es": "Menos administración, más negocio"}, "q": {"en": "How do I stop doing everything manually and save time on admin?", "pt": "Como parar de fazer tudo manualmente e economizar tempo na administração?", "es": "¿Cómo dejo de hacerlo todo a mano y ahorro tiempo en la administración?"}}}; var lang="en";
+  document.addEventListener("dason-lang",function(e){lang=e.detail; if(window.__last) render(window.__last);});
+  var go=document.getElementById("go"), res=document.getElementById("res");
+  var NONE={"en": "Pick at least one situation, or ask us for a free diagnosis.", "pt": "Escolha ao menos uma situação, ou peça um diagnóstico.", "es": "Elige al menos una situación, o pide un diagnóstico."}, HEAD={"en": "Based on your answers, start here:", "pt": "Pelas suas respostas, comece por aqui:", "es": "Según tus respuestas, empieza por aquí:"}, QB={"en": "Request a quote with these answers", "pt": "Pedir orçamento com estas respostas", "es": "Pedir presupuesto con estas respuestas"}, SEE={"en": "See how it works", "pt": "Ver como funciona", "es": "Ver cómo funciona"};
+  function render(r){
+    window.__last=r; res.innerHTML="";
+    if(!r.length){var p=document.createElement("p");p.textContent=NONE[lang];res.appendChild(p);return;}
+    var h=document.createElement("h2");h.textContent=HEAD[lang];res.appendChild(h);
+    var g=document.createElement("div");g.className="grid";
+    r.forEach(function(x){var a=document.createElement("a");a.className="card";a.href=x.slug+".html";
+      var t=document.createElement("h3");t.textContent=META[x.slug].name[lang];
+      var p=document.createElement("p");p.textContent=META[x.slug].q[lang];
+      var q=document.createElement("span");q.className="q";q.textContent=SEE[lang]+" →";
+      a.appendChild(t);a.appendChild(p);a.appendChild(q);g.appendChild(a);});
+    res.appendChild(g);
+    var row=document.createElement("div");row.className="row";
+    var b=document.createElement("a");b.className="btn";b.href="index.html#contact";b.textContent=QB[lang];
+    b.addEventListener("click",function(){
+      var lines=window.__picked.map(function(t){return "- "+t;}).join("\n");
+      try{localStorage.setItem("dason-diag",JSON.stringify({need:META[r[0].slug].need,msg:"Diagnostic answers:\n"+lines}));}catch(e){}
+    });
+    row.appendChild(b);res.appendChild(row);
+  }
+  go.addEventListener("click",function(){
+    var boxes=[].slice.call(document.querySelectorAll(".chk input:checked"));
+    var count={},order=[]; window.__picked=boxes.map(function(b){return b.getAttribute("data-en");});
+    boxes.forEach(function(b){var s=b.getAttribute("data-sol"); if(!count[s]){count[s]=0;order.push(s);} count[s]++;});
+    order.sort(function(a,b){return count[b]-count[a];});
+    render(order.map(function(s){return {slug:s};}));
+    res.scrollIntoView({behavior:"smooth",block:"nearest"});
+  });
+})();
+</script>
+</body>
+</html>
