@@ -6,7 +6,8 @@
 <title>Privacy Policy | DASON</title>
 <meta name="description" content="Privacy Policy of DASON, an AI automation and agents studio.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/privacy.html">
+<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/privacy.html"><link rel="alternate" hreflang="en" href="https://dandaraluciol.github.io/dasonmedia/privacy.html"><link rel="alternate" hreflang="pt" href="https://dandaraluciol.github.io/dasonmedia/pt/privacy.html"><link rel="alternate" hreflang="es" href="https://dandaraluciol.github.io/dasonmedia/es/privacy.html"><link rel="alternate" hreflang="x-default" href="https://dandaraluciol.github.io/dasonmedia/privacy.html">
+<link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website"><meta property="og:site_name" content="DASON"><meta property="og:title" content="Privacy Policy | DASON"><meta property="og:description" content="Privacy Policy of DASON, an AI automation and agents studio."><meta property="og:url" content="https://dandaraluciol.github.io/dasonmedia/privacy.html"><meta property="og:image" content="https://dandaraluciol.github.io/dasonmedia/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#09090A">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,8 +66,24 @@ footer a{color:var(--mid);display:inline-block;padding:10px 6px}
   document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){set(b.getAttribute("data-lang"));});});
   if(!document.querySelector(".todo")) document.querySelectorAll("[data-draft]").forEach(function(d){d.remove();});
   document.getElementById("yr").textContent=new Date().getFullYear();
-  set(saved||(nav==="pt"||nav==="es"?nav:"en"));
+  var FIX=document.documentElement.getAttribute("data-fixed");
+  set(FIX||saved||(nav==="pt"||nav==="es"?nav:"en"));
 })();
 </script>
+<script>
+(function(){
+  var p=location.pathname, m=p.match(/^(.*?)\/(pt|es)(\/[^\/]*)?$/), root, file;
+  if(m){root=m[1]; file=(m[3]||"/").replace(/^\//,"");}
+  else{root=p.replace(/\/[^\/]*$/,""); file=p.split("/").pop(); if(p.slice(-1)==="/") file="";}
+  document.querySelectorAll(".lang").forEach(function(g){g.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-lang]"); if(!b) return;
+    var l=b.getAttribute("data-lang");
+    try{localStorage.setItem("dason-lang",l);}catch(x){}
+    e.stopPropagation(); e.preventDefault();
+    location.href=root+(l==="en"?"":"/"+l)+"/"+file+location.hash;
+  },true);});
+})();
+</script>
+
 </body>
 </html>

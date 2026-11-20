@@ -6,8 +6,9 @@
 <title>DASON | AI automation and agents for business</title>
 <meta name="description" content="DASON builds AI agents, workflows and integrations that take repetitive work off your team. Remote-first automation studio working with companies worldwide, in English, Portuguese and Spanish.">
 <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#09090A">
-<!-- Replace https://YOUR-DOMAIN with the real address once the domain is live -->
-<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/">
+
+<link rel="canonical" href="https://dandaraluciol.github.io/dasonmedia/"><link rel="alternate" hreflang="en" href="https://dandaraluciol.github.io/dasonmedia/"><link rel="alternate" hreflang="pt" href="https://dandaraluciol.github.io/dasonmedia/pt/"><link rel="alternate" hreflang="es" href="https://dandaraluciol.github.io/dasonmedia/es/"><link rel="alternate" hreflang="x-default" href="https://dandaraluciol.github.io/dasonmedia/">
+<link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DASON">
 <meta property="og:title" content="DASON | We delete the line nobody invoices.">
@@ -15,7 +16,6 @@
 <meta property="og:url" content="https://dandaraluciol.github.io/dasonmedia/">
 <meta property="og:image" content="https://dandaraluciol.github.io/dasonmedia/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23090A0A'/%3E%3Cpath d='M18,18 H48 A32,32 0 0 1 48,82 H18 Z M34,34 V66 H46 A16,16 0 0 0 46,34 Z' fill='%23EDEDEE' fill-rule='evenodd'/%3E%3Crect x='42' y='44' width='9' height='12' fill='%236E6E75'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@500;700;800&display=swap">
@@ -515,6 +515,7 @@ a.sol.prob:hover{background:var(--panel)}
       <div class="ct-links">
         <a id="igLink" href="https://www.instagram.com/dasontech/" target="_blank" rel="noopener"><span>Instagram</span><span>@dasontech</span></a>
         <a id="mailLink" href="#" hidden><span>Email</span><span id="mailText"></span></a>
+        <a id="bookLink" href="#" target="_blank" rel="noopener" hidden><span data-i18n="bk_l">Book a call</span><span id="bookText"></span></a>
       </div>
     </div>
 
@@ -595,6 +596,7 @@ a.sol.prob:hover{background:var(--panel)}
   /* ---- Set these before going live ---- */
   var CONFIG = {
     email: "contactdasontech@gmail.com",          // professional email, e.g. hello@yourdomain.com (shown on the page when set)
+    bookingUrl: "",
     formEndpoint: "https://formspree.io/f/xeagleya"    // a form service URL (Formspree, Basin, Getform...). Empty = visitors copy the request and DM it.
   };
 
@@ -609,6 +611,7 @@ a.sol.prob:hover{background:var(--panel)}
   s_p1:"A DASON projeta e constrói automação e IA para empresas de qualquer porte. Encontramos o trabalho repetitivo escondido na sua operação, tiramos isso do caminho e deixamos a equipe com dias mais claros e menos erros.",
   s_p2:"Somos remotos por princípio: uma empresa em São Paulo, Madri ou Dubai recebe o mesmo processo, o mesmo padrão e a mesma atenção.",
   pr1_t:"Clientes agendam sozinhos",pr1_q:"Como fazer meus clientes agendarem sozinhos?",pr2_t:"Responder mensagens sozinho",pr2_q:"Como responder mensagens de clientes automaticamente?",pr3_t:"Pedidos organizados",pr3_q:"Como organizar os pedidos da minha empresa?",pr4_t:"Lembretes de pagamento",pr4_q:"Como enviar lembretes de pagamento automaticamente?",pr5_t:"Nunca perder um cliente",pr5_q:"Como parar de perder clientes e organizar melhor o atendimento?",pr6_t:"Menos burocracia, mais negócio",pr6_q:"Como parar de fazer tudo manualmente e economizar tempo na administração?",pr_eyebrow:"Comece pelo problema",pr_title:"Sem palavras técnicas. Encontre a situação que parece a sua semana.",pr_diag:"Fazer o diagnóstico de 2 minutos",pr_all:"Ver todas as soluções",pr_more:"Ver como funciona →",nav_diag:"Diagnóstico",chip_l:"Não sabe como explicar? Toque no que parece com você:",
+  bk_l:"Agendar conversa",
   sol_eyebrow:"O que construímos",sol_title:"Cinco formas de tirar trabalho da sua equipe.",
   sol1_t:"Agentes de IA",sol1_d:"Assistentes que leem, decidem dentro das regras que você define e passam os casos difíceis para uma pessoa.",sol1_u:"Dúvidas de clientes · qualificação de leads · suporte interno",
   sol2_t:"Automação de fluxos",sol2_d:"As etapas repetidas entre as suas ferramentas, rodando sem ninguém clicar.",sol2_u:"Pedidos · notas fiscais · onboarding · aprovações",
@@ -659,6 +662,7 @@ a.sol.prob:hover{background:var(--panel)}
   s_p1:"DASON diseña y construye automatización e IA para empresas de cualquier tamaño. Encontramos el trabajo repetitivo escondido en tu operación, lo eliminamos y dejamos a tu equipo con días más claros y menos errores.",
   s_p2:"Somos remotos por diseño: una empresa en São Paulo, Madrid o Dubái recibe el mismo proceso, el mismo estándar y la misma atención.",
   pr1_t:"Los clientes reservan solos",pr1_q:"¿Cómo hago que mis clientes reserven cita por su cuenta?",pr2_t:"Responder mensajes solo",pr2_q:"¿Cómo respondo automáticamente a los mensajes de mis clientes?",pr3_t:"Pedidos organizados",pr3_q:"¿Cómo organizo los pedidos de mi empresa?",pr4_t:"Recordatorios de pago",pr4_q:"¿Cómo envío recordatorios de pago automáticamente?",pr5_t:"No perder ningún cliente",pr5_q:"¿Cómo dejo de perder clientes potenciales y organizo mejor la atención?",pr6_t:"Menos administración, más negocio",pr6_q:"¿Cómo dejo de hacerlo todo a mano y ahorro tiempo en la administración?",pr_eyebrow:"Empieza por el problema",pr_title:"Sin palabras técnicas. Encuentra la situación que se parece a tu semana.",pr_diag:"Hacer el diagnóstico de 2 minutos",pr_all:"Ver todas las soluciones",pr_more:"Ver cómo funciona →",nav_diag:"Diagnóstico",chip_l:"¿No sabes cómo explicarlo? Toca lo que se parezca a ti:",
+  bk_l:"Reservar llamada",
   sol_eyebrow:"Qué construimos",sol_title:"Cinco formas de quitar trabajo a tu equipo.",
   sol1_t:"Agentes de IA",sol1_d:"Asistentes que leen, deciden dentro de las reglas que defines y pasan los casos difíciles a una persona.",sol1_u:"Dudas de clientes · cualificación de leads · soporte interno",
   sol2_t:"Automatización de flujos",sol2_d:"Los pasos repetidos entre tus herramientas, funcionando sin que nadie haga clic.",sol2_u:"Pedidos · facturas · onboarding · aprobaciones",
@@ -728,7 +732,8 @@ a.sol.prob:hover{background:var(--panel)}
   /* language: saved choice, else browser language */
   var saved = null; try{ saved = localStorage.getItem("dason-lang"); }catch(e){}
   var nav = (navigator.language||"en").slice(0,2).toLowerCase();
-  var start = saved || (nav==="pt"||nav==="es" ? nav : "en");
+  var FIXL = document.documentElement.getAttribute("data-fixed");
+  var start = FIXL || saved || (nav==="pt"||nav==="es" ? nav : "en");
   document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); }); });
 
   /* mobile menu */
@@ -785,6 +790,7 @@ a.sol.prob:hover{background:var(--panel)}
   region(guess);
 
   /* contact details */
+  if(CONFIG.bookingUrl){ var bl = $("bookLink"); bl.hidden = false; bl.href = CONFIG.bookingUrl; }
   if(CONFIG.email){ var ml = $("mailLink"); ml.hidden = false; ml.href = "mailto:"+CONFIG.email; $("mailText").textContent = CONFIG.email; }
 
   /* form */
@@ -835,6 +841,21 @@ a.sol.prob:hover{background:var(--panel)}
 
   $("yr").textContent = "© " + new Date().getFullYear();
   setLang(start);
+})();
+</script>
+
+<script>
+(function(){
+  var p=location.pathname, m=p.match(/^(.*?)\/(pt|es)(\/[^\/]*)?$/), root, file;
+  if(m){root=m[1]; file=(m[3]||"/").replace(/^\//,"");}
+  else{root=p.replace(/\/[^\/]*$/,""); file=p.split("/").pop(); if(p.slice(-1)==="/") file="";}
+  document.querySelectorAll(".lang").forEach(function(g){g.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-lang]"); if(!b) return;
+    var l=b.getAttribute("data-lang");
+    try{localStorage.setItem("dason-lang",l);}catch(x){}
+    e.stopPropagation(); e.preventDefault();
+    location.href=root+(l==="en"?"":"/"+l)+"/"+file+location.hash;
+  },true);});
 })();
 </script>
 
