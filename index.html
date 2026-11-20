@@ -595,7 +595,7 @@ a.sol.prob:hover{background:var(--panel)}
   /* ---- Set these before going live ---- */
   var CONFIG = {
     email: "contactdasontech@gmail.com",          // professional email, e.g. hello@yourdomain.com (shown on the page when set)
-    formEndpoint: "https://formsubmit.co/ajax/contactdasontech@gmail.com"    // a form service URL (Formspree, Basin, Getform...). Empty = visitors copy the request and DM it.
+    formEndpoint: "https://formspree.io/f/xeagleya"    // a form service URL (Formspree, Basin, Getform...). Empty = visitors copy the request and DM it.
   };
 
   var T = {
@@ -819,9 +819,9 @@ a.sol.prob:hover{background:var(--panel)}
       resBox.scrollIntoView({behavior:"smooth",block:"nearest"});
     }
     if(CONFIG.formEndpoint){
-      fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(Object.assign({_subject:"DASON quote request: "+d.name,_template:"table",_captcha:"false",_autoresponse:COPY.auto[lang]},d))})
+      fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(Object.assign({_subject:"DASON quote request: "+d.name},d))})
         .then(function(r){ if(!r.ok) throw new Error("bad"); return r.json(); })
-        .then(function(j){ if(j && (j.success===false||j.success==="false")) throw new Error("inactive"); form.hidden = true; resBox.hidden = false;
+        .then(function(j){ if(j && (j.ok===false || j.error)) throw new Error("rejected"); form.hidden = true; resBox.hidden = false;
           $("fResTitle").textContent = COPY.sent[lang][0]; $("fResText").textContent = COPY.sent[lang][1]; $("fPre").hidden = true; $("fCopy").hidden = true; })
         .catch(showFail);
     } else { showFail(); }
