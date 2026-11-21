@@ -59,7 +59,9 @@ p{margin:0}
 nav.main{margin-left:auto;display:flex;align-items:center;gap:22px}
 nav.main a{white-space:nowrap;font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--mid);padding:6px 0}
 nav.main a:hover{color:var(--text)}
-.lang{display:flex;border:1px solid var(--line2)}
+.lang{display:flex;align-items:center;border:1px solid var(--line2)}
+.lang::before{content:"";width:14px;height:14px;margin:0 2px 0 9px;flex:none;opacity:.7;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A4A4AB' stroke-width='1.6'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18'/%3E%3C/svg%3E") center/contain no-repeat}
+.lang-m{display:none}
 .lang button{all:unset;cursor:pointer;font:500 13px var(--f-mono);letter-spacing:.1em;padding:7px 9px;color:var(--mid)}
 .lang button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
 .lang button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
@@ -150,6 +152,63 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--text);outline-of
 .step p{color:var(--mid)}
 
 /* audience */
+
+.aud-head{max-width:760px}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.tier{background:var(--bg);padding:30px 28px 32px;position:relative}
+.tier h3{font:700 1.2rem var(--f-display);letter-spacing:-.02em;margin-top:14px}
+.tier p{color:var(--mid);margin-top:10px;max-width:46ch}
+.tier-tag{font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{font:400 13px var(--f-mono);letter-spacing:.04em;border:1px solid var(--line2);color:var(--mid);padding:6px 10px;transition:border-color .2s,color .2s}
+.chips span:hover{border-color:var(--text);color:var(--text)}
+.tier.t1{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;background:var(--bg2);padding:clamp(32px,4vw,52px) clamp(28px,4vw,52px);overflow:hidden}
+.tier.t1::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--text),transparent);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.tier.t1.rv-in::before,html:not(.js-rv) .tier.t1::before{transform:scaleX(1)}
+.tier.t1 .tier-tag{color:var(--ink);background:var(--text);padding:4px 9px}
+.tier.t1 h3{font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:-.03em}
+.tier.t1 p{color:var(--text);opacity:.85;font-size:1.05rem}
+.pts{list-style:none;display:grid;gap:14px}
+.pts li{border-left:2px solid var(--line2);padding:4px 0 4px 16px;color:var(--text);transition:border-color .25s,padding-left .25s}
+.pts li:hover{border-color:var(--text);padding-left:22px}
+.tier.t2,.tier.t3{transition:background .25s}
+.tier.t2:hover,.tier.t3:hover{background:var(--bg2)}
+@media (max-width:860px){.tiers{grid-template-columns:minmax(0,1fr)}.tier.t1{grid-template-columns:minmax(0,1fr)}}
+
+.flow-card{margin-top:44px;border:1px solid var(--line2);background:var(--bg2);padding:clamp(20px,3vw,34px)}
+.flow-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.seg{display:flex;border:1px solid var(--line2)}
+.seg button{all:unset;cursor:pointer;font:500 13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;color:var(--mid);min-height:20px;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.live{display:inline-flex;align-items:center;gap:9px;font:400 13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--text);display:inline-block;flex:none;animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(237,237,238,.55)}80%,100%{box-shadow:0 0 0 9px rgba(237,237,238,0)}}
+.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px;margin-top:30px}
+.node{position:relative;border:1px solid var(--line2);background:var(--bg);padding:16px 14px 18px;display:flex;flex-direction:column;gap:6px;transition:border-color .3s,background .3s,transform .3s}
+.node .n{font:400 13px var(--f-mono);color:var(--dim)}
+.node b{font:700 1rem var(--f-display);letter-spacing:-.02em;line-height:1.25}
+.node small{color:var(--dim);font-size:13px;line-height:1.4}
+.node .tm{font:500 13px var(--f-mono);font-style:normal;color:var(--dim);margin-top:auto;padding-top:8px;opacity:0;transition:opacity .3s}
+.node:not(:last-child)::after{content:"";position:absolute;top:50%;left:100%;width:30px;height:1px;background:var(--line2)}
+.node:not(:last-child)::before{content:"";position:absolute;top:50%;left:100%;width:30px;height:2px;margin-top:-.5px;background:var(--text);transform:scaleX(0);transform-origin:0 50%;transition:transform var(--dur,.5s) linear;z-index:1}
+.node.cur{border-color:var(--text);background:#141417;transform:translateY(-3px)}
+.node.cur .n{color:var(--text)}
+.node.done{border-color:#5A5A62}
+.node.done .tm,.node.cur .tm{opacity:1}
+.node.done .n::after{content:" \2713";color:var(--text)}
+.node.done:not(:last-child)::before{transform:scaleX(1)}
+.flow-card[data-mode="manual"] .node.cur{border-style:dashed}
+.flow-card[data-mode="manual"] .node:not(:last-child)::after{background:none;border-top:1px dashed var(--line2);height:0}
+.flow-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:26px;padding-top:18px;border-top:1px dashed var(--line2);font:400 13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.flow-total b{font:700 clamp(1.6rem,3vw,2.2rem) var(--f-display);letter-spacing:-.03em;color:var(--text);font-variant-numeric:tabular-nums;text-transform:none}
+@media (max-width:860px){
+  .flow{grid-template-columns:minmax(0,1fr);gap:26px}
+  .node:not(:last-child)::after,.node:not(:last-child)::before{top:100%;left:24px;width:1px;height:26px;margin:0}
+  .node:not(:last-child)::before{transform:scaleY(0);transform-origin:50% 0}
+  .node.done:not(:last-child)::before{transform:scaleY(1)}
+  .flow-card[data-mode="manual"] .node:not(:last-child)::after{border-top:0;border-left:1px dashed var(--line2);width:0;height:26px}
+}
 .aud-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,6vw,96px)}
 .aud{border-top:1px solid var(--line)}
 .aud div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 24px;padding:22px 0;border-bottom:1px solid var(--line)}
@@ -169,6 +228,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--text);outline-of
 .clocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .clock{background:var(--bg);padding:20px 18px}
 .clock .c{font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.clock .t .s{font-size:.55em;color:var(--dim);margin-left:2px;letter-spacing:0}
+.clock .o .pulse{width:6px;height:6px;background:var(--dim);animation:none}
+.clock.on .o .pulse{background:var(--text);animation:pulse 1.8s ease-out infinite}
 .clock .t{font:700 clamp(1.5rem,3vw,2.1rem) var(--f-display);letter-spacing:-.03em;margin-top:10px;font-variant-numeric:tabular-nums}
 .clock .o{display:flex;align-items:center;gap:8px;margin-top:8px;font:400 13px var(--f-mono);color:var(--dim)}
 .clock.on .o{color:var(--text)}
@@ -242,7 +304,8 @@ footer{border-top:1px solid var(--line);padding-block:44px calc(44px + env(safe-
   nav.main{display:none;position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gutter-r) 20px var(--gutter-l)}
   nav.main.open{display:flex}
   nav.main a{padding:16px 0;border-bottom:1px solid var(--line)}
-  nav.main .lang{margin-top:16px;align-self:flex-start}
+  nav.main .lang{display:none}
+  .lang-m{display:flex;margin-left:auto}
   nav.main .btn{margin-top:16px;justify-content:center}
   .top .wrap{gap:12px}
 }
@@ -276,6 +339,15 @@ footer{border-top:1px solid var(--line);padding-block:44px calc(44px + env(safe-
 .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
 @media (min-width:900px){.sticky-cta{display:none!important}}
 /* motion */
+.sol.prob:hover h3,.sol:hover h3{transform:translateX(4px)}
+.sol h3,.sol.prob h3{transition:transform .25s}
+.btn .arr,.btn span[aria-hidden]{display:inline-block;transition:transform .2s}
+.btn:hover span[aria-hidden]{transform:translateX(4px)}
+.tabs [role=tab]{transition:background .2s,color .2s}
+.tabs [role=tab]:active,.seg button:active,.lang button:active{transform:scale(.97)}
+@media (hover:none){.btn:active{transform:scale(.98)}.node.cur{transform:none}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none!important}.node,.node::before,.tier.t1::before{transition:none!important}.sol h3{transition:none}.chips span,.pts li{transition:none}}
+
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--text);transform:scaleX(0);transform-origin:0 50%;z-index:60;opacity:.8}
 .js-rv .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
 .js-rv .rv.rv-in{opacity:1;transform:none}
@@ -322,6 +394,11 @@ a.sol.prob:hover{background:var(--panel)}
       <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M0,0 H48 A50,50 0 0 1 48,100 H0 Z M24,24 V76 H46 A26,26 0 0 0 46,24 Z" fill="#EDEDEE" fill-rule="evenodd"></path><rect x="34" y="38" width="16" height="24" fill="#6E6E75"></rect></svg>
       <span>DASON</span>
     </a>
+    <div class="lang lang-m" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+    </div>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" data-i18n="nav_menu">Menú</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <a href="solutions.html" data-i18n="nav_sol">Soluciones</a>
@@ -357,9 +434,9 @@ a.sol.prob:hover{background:var(--panel)}
     <aside class="receipt" aria-label="Example receipt">
       <span class="tag" data-i18n="r_tag">Ejemplo ilustrativo</span>
       <h3 data-i18n="r_title">Coste anual del trabajo repetido</h3>
-      <div class="rline" style="--i:0"><b data-i18n="r1">Copiar emails a una hoja</b><span class="h">208 h</span><small data-i18n="r1d">10 min × 5 al día</small></div>
-      <div class="rline" style="--i:1"><b data-i18n="r2">Responder las mismas preguntas</b><span class="h">250 h</span><small data-i18n="r2d">15 min × 4 al día</small></div>
-      <div class="rline" style="--i:2"><b data-i18n="r3">Montar el informe semanal</b><span class="h">100 h</span><small data-i18n="r3d">2 h × 50 semanas</small></div>
+      <div class="rline" style="--i:0"><b data-i18n="r1">Copiar emails a una hoja</b><span class="h" data-v="208">208 h</span><small data-i18n="r1d">10 min × 5 al día</small></div>
+      <div class="rline" style="--i:1"><b data-i18n="r2">Responder las mismas preguntas</b><span class="h" data-v="250">250 h</span><small data-i18n="r2d">15 min × 4 al día</small></div>
+      <div class="rline" style="--i:2"><b data-i18n="r3">Montar el informe semanal</b><span class="h" data-v="100">100 h</span><small data-i18n="r3d">2 h × 50 semanas</small></div>
       <div class="rtotal">
         <div class="row"><span data-i18n="r_total">Total</span><span data-i18n="r_total_v">558 horas al año</span></div>
         <span class="s" data-i18n="r_total_s">Casi 14 semanas de trabajo.</span>
@@ -402,6 +479,31 @@ a.sol.prob:hover{background:var(--panel)}
       <article class="sol"><h3 data-i18n="sol3_t">Integraciones y datos</h3><p data-i18n="sol3_d">Tus sistemas dejan de depender de alguien que reescriba datos entre ellos.</p><p class="use" data-i18n="sol3_u">CRM · stock · contabilidad · e-commerce · hojas de cálculo</p></article>
       <article class="sol"><h3 data-i18n="sol4_t">Informes que se montan solos</h3><p data-i18n="sol4_d">El informe del lunes se monta solo con datos actuales y llega donde tu equipo ya mira.</p><p class="use" data-i18n="sol4_u">Ventas · operaciones · finanzas · avisos a clientes</p></article>
       <article class="sol"><h3 data-i18n="sol5_t">Diagnóstico de procesos</h3><p data-i18n="sol5_d">Un análisis estructurado de dónde se pierden las horas, con una lista ordenada de lo que conviene automatizar primero.</p><p class="use" data-i18n="sol5_u">Para equipos que quieren un plan antes de decidir</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="fl_eyebrow">Mira la diferencia</div>
+    <h2 data-i18n="fl_title" class="">Una solicitud, a mano o con un flujo.</h2>
+    <div class="flow-card" id="flowCard" data-mode="auto">
+      <div class="flow-top">
+        <div class="seg" role="group" aria-label="Mode">
+          <button type="button" data-mode="manual" aria-pressed="false" data-i18n="fl_man">A mano</button>
+          <button type="button" data-mode="auto" aria-pressed="true" data-i18n="fl_auto">Con DASON</button>
+        </div>
+        <span class="live"><i class="pulse"></i><span id="flStatus">Ejecutando</span></span>
+      </div>
+      <ol class="flow" id="flowList">
+        <li class="node" data-m="3 min" data-a="2 s"><span class="n">01</span><b data-i18n="fl1">Llega la solicitud</b><small data-i18n="fl1s">Correo, formulario o chat</small><em class="tm">2 s</em></li>
+        <li class="node" data-m="4 min" data-a="4 s"><span class="n">02</span><b data-i18n="fl2">Entender y clasificar</b><small data-i18n="fl2s">Quién la atiende, qué urgencia</small><em class="tm">4 s</em></li>
+        <li class="node" data-m="5 min" data-a="3 s"><span class="n">03</span><b data-i18n="fl3">Actualizar tus herramientas</b><small data-i18n="fl3s">CRM, hoja de cálculo, agenda</small><em class="tm">3 s</em></li>
+        <li class="node" data-m="4 min" data-a="2 s"><span class="n">04</span><b data-i18n="fl4">Responder al cliente</b><small data-i18n="fl4s">Confirmación enviada</small><em class="tm">2 s</em></li>
+        <li class="node" data-m="" data-a=""><span class="n">05</span><b data-i18n="fl5">Las personas atienden las excepciones</b><small data-i18n="fl5s">Los casos difíciles pasan a una persona</small><em class="tm"></em></li>
+      </ol>
+      <div class="flow-total"><span data-i18n="fl_tl">Tiempo de una solicitud</span><b id="flTime">0 s</b></div>
+      <p class="fine" data-i18n="fl_note">Ejemplo ilustrativo. Los tiempos reales dependen de tu proceso.</p>
     </div>
   </div>
 </section>
@@ -449,21 +551,38 @@ a.sol.prob:hover{background:var(--panel)}
 </section>
 
 <section id="clients">
-  <div class="wrap aud-grid">
-    <div>
+  <div class="wrap">
+    <div class="aud-head">
       <div class="eyebrow" data-i18n="a_eyebrow">Con quién trabajamos</div>
-      <h2 data-i18n="a_title" class="">Para equipos en crecimiento y para quien está empezando.</h2>
-      <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="a_p">Desde empresas consolidadas hasta profesionales autónomos y negocios nuevos que quieren empezar organizados y ganar tiempo desde el primer día.</p>
+      <h2 data-i18n="a_title" class="">De un profesional independiente a una operación completa.</h2>
+      <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="a_p">DASON automatiza equipos grandes y operaciones complejas, y también ayuda a pequeños negocios y profesionales a empezar organizados.</p>
     </div>
-    <div class="aud">
-      <div class=""><b data-i18n="a6">Profesionales de la belleza y autónomas</b><span data-i18n="a6d">Esteticistas, lash designers y profesionales independientes: reservas online, recordatorios, mensajes de clientes y agenda ordenada.</span></div>
-      <div class=""><b data-i18n="a7">Pequeños emprendedores y profesionales independientes</b><span data-i18n="a7d">Atención al cliente, presupuestos, cobros y administración diaria resueltos sin contratar a nadie más.</span></div>
-      <div class=""><b data-i18n="a8">Negocios recién creados</b><span data-i18n="a8d">Empieza con procesos ordenados desde el primer cliente y ahorra horas cada semana.</span></div>
-      <div class=""><b data-i18n="a1">Tiendas online y marketplaces</b><span data-i18n="a1d">Pedidos, stock, facturas, mensajes de clientes.</span></div>
-      <div class=""><b data-i18n="a2">Agencias y consultoras</b><span data-i18n="a2d">Onboarding, informes, avisos a clientes.</span></div>
-      <div class=""><b data-i18n="a3">Servicios profesionales</b><span data-i18n="a3d">Formularios de entrada, agenda, documentos.</span></div>
-      <div class=""><b data-i18n="a4">Operaciones y logística</b><span data-i18n="a4d">Seguimiento, avisos, gestión de proveedores.</span></div>
-      <div class=""><b data-i18n="a5">Fundadores y startups</b><span data-i18n="a5d">La administración que te impide construir.</span></div>
+    <div class="tiers">
+      <article class="tier t1">
+        <div class="t1-main">
+          <span class="tier-tag" data-i18n="t1_tag">Enfoque principal</span>
+          <h3 data-i18n="t1_t">Empresas medianas y grandes</h3>
+          <p data-i18n="t1_d">Equipos grandes, alto volumen de atención, muchos procesos internos y tareas repetidas. Creamos automatización e IA integradas y a medida que eliminan el trabajo manual a gran escala.</p>
+          <div class="chips"><span data-i18n="a1">Tiendas online y marketplaces</span><span data-i18n="a2">Agencias y consultoras</span><span data-i18n="a3">Servicios profesionales</span><span data-i18n="a4">Operaciones y logística</span></div>
+        </div>
+        <ul class="pts">
+          <li data-i18n="t1p1">Atención y captación de clientes en alto volumen</li>
+          <li data-i18n="t1p2">Integración entre sistemas, informes y aprobaciones</li>
+          <li data-i18n="t1p3">Flujos y agentes a medida, con personas supervisando los casos difíciles</li>
+        </ul>
+      </article>
+      <article class="tier t2">
+        <span class="tier-tag" data-i18n="t2_tag">En crecimiento</span>
+        <h3 data-i18n="t2_t">Pequeñas empresas y negocios en crecimiento</h3>
+        <p data-i18n="t2_d">Profesionaliza tus procesos, reduce tareas manuales y gana productividad mientras creces.</p>
+        <div class="chips"><span data-i18n="a5">Fundadores y startups</span><span data-i18n="t2a">Negocios locales</span><span data-i18n="t2b">Equipos en crecimiento</span></div>
+      </article>
+      <article class="tier t3">
+        <span class="tier-tag" data-i18n="t3_tag">Empezando</span>
+        <h3 data-i18n="t3_t">Profesionales independientes y nuevos emprendedores</h3>
+        <p data-i18n="t3_d">Esteticistas, lash designers y otros profesionales que quieren reservas, mensajes de clientes y agenda resueltos automáticamente desde el primer día.</p>
+        <div class="chips"><span data-i18n="t3a">Esteticistas</span><span data-i18n="t3b">Lash designers</span><span data-i18n="t3c">Profesionales de la belleza</span><span data-i18n="t3d">Negocios nuevos</span></div>
+      </article>
     </div>
   </div>
 </section>
@@ -497,8 +616,8 @@ a.sol.prob:hover{background:var(--panel)}
       <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="g_p">Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.</p>
     </div>
     <div>
-      <div class="clocks" id="clocks"><div class="clock on"><div class="c">Madrid</div><div class="t">11:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock"><div class="c">São Paulo</div><div class="t">07:27</div><div class="o"><span>Fuera de horario</span></div></div><div class="clock"><div class="c">New York</div><div class="t">05:27</div><div class="o"><span>Fuera de horario</span></div></div><div class="clock on"><div class="c">London</div><div class="t">10:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock on"><div class="c">Dubai</div><div class="t">14:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock"><div class="c">Singapore</div><div class="t">18:27</div><div class="o"><span>Fuera de horario</span></div></div></div>
-      <p class="clk-hint" data-i18n="g_hint">Hora local ahora en cada ciudad · horario laboral 09–18</p>
+      <div class="clocks" id="clocks"><div class="clock on"><div class="c">Madrid</div><div class="t"><span class="hm">11:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Horario laboral</span></div></div><div class="clock"><div class="c">São Paulo</div><div class="t"><span class="hm">07:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Fuera de horario</span></div></div><div class="clock"><div class="c">New York</div><div class="t"><span class="hm">05:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Fuera de horario</span></div></div><div class="clock on"><div class="c">London</div><div class="t"><span class="hm">10:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Horario laboral</span></div></div><div class="clock on"><div class="c">Dubai</div><div class="t"><span class="hm">14:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Horario laboral</span></div></div><div class="clock"><div class="c">Singapore</div><div class="t"><span class="hm">18:44</span><span class="s">:24</span></div><div class="o"><i class="pulse"></i><span class="lb">Fuera de horario</span></div></div></div>
+      <p class="clk-hint"><i class="pulse" style="margin-right:10px"></i><span data-i18n="g_hint">Hora local ahora en cada ciudad · horario laboral 09–18</span></p>
     </div>
   </div>
 </section>
@@ -659,8 +778,8 @@ a.sol.prob:hover{background:var(--panel)}
   m2_t:"Mapa",m2_d:"Desenhamos o fluxo no papel primeiro. Você vê e aprova antes de qualquer construção.",
   m3_t:"Construção",m3_d:"Fluxos, agentes e integrações, testados antes de tocar nos seus dados reais.",
   m4_t:"Operação",m4_d:"Acompanhamos e ajustamos conforme o seu negócio muda.",
-  a_eyebrow:"Com quem trabalhamos",a_title:"Para equipes em crescimento e para quem está começando agora.",a_p:"De empresas estruturadas a profissionais autônomos e negócios recém-criados que querem começar organizados e ganhar tempo desde o primeiro dia.",a6:"Profissionais da beleza e autônomas",a6d:"Esteticistas, lash designers e profissionais independentes: agendamento online, lembretes, mensagens de clientes e agenda organizada.",a7:"Pequenos empreendedores e profissionais autônomos",a7d:"Atendimento, orçamentos, cobranças e rotina administrativa resolvidos sem contratar mais gente.",cb_t:"Não sabe por onde começar?",cb_p:"Faça o diagnóstico de 2 minutos ou conte o que se repete na sua semana. Respondemos com uma proposta por escrito.",a8:"Negócios recém-criados",a8d:"Comece com processos organizados desde o primeiro cliente e economize horas toda semana.",
-  a1:"Lojas online e marketplaces",a1d:"Pedidos, estoque, notas fiscais, mensagens de clientes.",a2:"Agências e consultorias",a2d:"Onboarding, relatórios, atualizações para clientes.",a3:"Serviços profissionais",a3d:"Formulários de entrada, agenda, documentos.",a4:"Operações e logística",a4d:"Rastreamento, avisos, acompanhamento de fornecedores.",a5:"Fundadores e startups",a5d:"A burocracia que te impede de construir.",
+  a_eyebrow:"Com quem trabalhamos",cb_t:"Não sabe por onde começar?",cb_p:"Faça o diagnóstico de 2 minutos ou conte o que se repete na sua semana. Respondemos com uma proposta por escrito.",a_title:"De um profissional autônomo a uma operação inteira.",a_p:"A DASON automatiza equipes grandes e operações complexas, e também ajuda pequenos negócios e profissionais a começarem organizados.",t1_tag:"Foco principal",t1_t:"Empresas de médio e grande porte",t1_d:"Equipes grandes, alto volume de atendimento, muitos processos internos e tarefas repetidas. Criamos automação e IA integradas e sob medida, que tiram o trabalho manual em escala.",t1p1:"Atendimento e captação de clientes em alto volume",t1p2:"Integração entre sistemas, relatórios e aprovações",t1p3:"Fluxos e agentes sob medida, com pessoas supervisionando os casos difíceis",a1:"Lojas online e marketplaces",a2:"Agências e consultorias",a3:"Serviços profissionais",a4:"Operações e logística",t2_tag:"Em crescimento",t2_t:"Pequenas empresas e negócios em crescimento",t2_d:"Profissionalize seus processos, reduza tarefas manuais e ganhe produtividade enquanto cresce.",a5:"Fundadores e startups",t2a:"Negócios locais",t2b:"Equipes em crescimento",t3_tag:"Começando",t3_t:"Profissionais autônomos e novos empreendedores",t3_d:"Esteticistas, lash designers e outros profissionais que querem agendamentos, mensagens de clientes e agenda resolvidos automaticamente desde o primeiro dia.",t3a:"Esteticistas",t3b:"Lash designers",t3c:"Profissionais da beleza",t3d:"Novos negócios",fl_eyebrow:"Veja a diferença",fl_title:"Um pedido, feito à mão ou por um fluxo.",fl_man:"À mão",fl_auto:"Com a DASON",fl1:"O pedido chega",fl1s:"E-mail, formulário ou chat",fl2:"Entender e classificar",fl2s:"Quem resolve, qual a urgência",fl3:"Atualizar suas ferramentas",fl3s:"CRM, planilha, agenda",fl4:"Responder ao cliente",fl4s:"Confirmação enviada",fl5:"Pessoas cuidam das exceções",fl5s:"Casos difíceis vão para uma pessoa",fl_tl:"Tempo de um pedido",fl_note:"Exemplo ilustrativo. Os tempos reais dependem do seu processo.",
+  
   w_eyebrow:"Por que a DASON",w_title:"Não é mais uma agência.",
   w1_t:"Começamos apagando, não acrescentando.",w1_d:"Se um processo deve ser mais simples, nós o simplificamos antes de escrever qualquer coisa.",
   w2_t:"Dizemos o que não automatizar.",w2_d:"Algum trabalho deve continuar humano. Dizemos isso e explicamos o motivo.",
@@ -710,8 +829,8 @@ a.sol.prob:hover{background:var(--panel)}
   m2_t:"Mapa",m2_d:"Dibujamos el flujo en papel primero. Lo ves y lo apruebas antes de construir nada.",
   m3_t:"Construcción",m3_d:"Flujos, agentes e integraciones, probados antes de tocar tus datos reales.",
   m4_t:"Operación",m4_d:"Lo supervisamos y lo ajustamos a medida que tu negocio cambia.",
-  a_eyebrow:"Con quién trabajamos",a_title:"Para equipos en crecimiento y para quien está empezando.",a_p:"Desde empresas consolidadas hasta profesionales autónomos y negocios nuevos que quieren empezar organizados y ganar tiempo desde el primer día.",a6:"Profesionales de la belleza y autónomas",a6d:"Esteticistas, lash designers y profesionales independientes: reservas online, recordatorios, mensajes de clientes y agenda ordenada.",a7:"Pequeños emprendedores y profesionales independientes",a7d:"Atención al cliente, presupuestos, cobros y administración diaria resueltos sin contratar a nadie más.",cb_t:"¿No sabes por dónde empezar?",cb_p:"Haz el diagnóstico de 2 minutos o cuéntanos qué se repite en tu semana. Te respondemos con una propuesta por escrito.",a8:"Negocios recién creados",a8d:"Empieza con procesos ordenados desde el primer cliente y ahorra horas cada semana.",
-  a1:"Tiendas online y marketplaces",a1d:"Pedidos, stock, facturas, mensajes de clientes.",a2:"Agencias y consultoras",a2d:"Onboarding, informes, avisos a clientes.",a3:"Servicios profesionales",a3d:"Formularios de entrada, agenda, documentos.",a4:"Operaciones y logística",a4d:"Seguimiento, avisos, gestión de proveedores.",a5:"Fundadores y startups",a5d:"La administración que te impide construir.",
+  a_eyebrow:"Con quién trabajamos",cb_t:"¿No sabes por dónde empezar?",cb_p:"Haz el diagnóstico de 2 minutos o cuéntanos qué se repite en tu semana. Te respondemos con una propuesta por escrito.",a_title:"De un profesional independiente a una operación completa.",a_p:"DASON automatiza equipos grandes y operaciones complejas, y también ayuda a pequeños negocios y profesionales a empezar organizados.",t1_tag:"Enfoque principal",t1_t:"Empresas medianas y grandes",t1_d:"Equipos grandes, alto volumen de atención, muchos procesos internos y tareas repetidas. Creamos automatización e IA integradas y a medida que eliminan el trabajo manual a gran escala.",t1p1:"Atención y captación de clientes en alto volumen",t1p2:"Integración entre sistemas, informes y aprobaciones",t1p3:"Flujos y agentes a medida, con personas supervisando los casos difíciles",a1:"Tiendas online y marketplaces",a2:"Agencias y consultoras",a3:"Servicios profesionales",a4:"Operaciones y logística",t2_tag:"En crecimiento",t2_t:"Pequeñas empresas y negocios en crecimiento",t2_d:"Profesionaliza tus procesos, reduce tareas manuales y gana productividad mientras creces.",a5:"Fundadores y startups",t2a:"Negocios locales",t2b:"Equipos en crecimiento",t3_tag:"Empezando",t3_t:"Profesionales independientes y nuevos emprendedores",t3_d:"Esteticistas, lash designers y otros profesionales que quieren reservas, mensajes de clientes y agenda resueltos automáticamente desde el primer día.",t3a:"Esteticistas",t3b:"Lash designers",t3c:"Profesionales de la belleza",t3d:"Negocios nuevos",fl_eyebrow:"Mira la diferencia",fl_title:"Una solicitud, a mano o con un flujo.",fl_man:"A mano",fl_auto:"Con DASON",fl1:"Llega la solicitud",fl1s:"Correo, formulario o chat",fl2:"Entender y clasificar",fl2s:"Quién la atiende, qué urgencia",fl3:"Actualizar tus herramientas",fl3s:"CRM, hoja de cálculo, agenda",fl4:"Responder al cliente",fl4s:"Confirmación enviada",fl5:"Las personas atienden las excepciones",fl5s:"Los casos difíciles pasan a una persona",fl_tl:"Tiempo de una solicitud",fl_note:"Ejemplo ilustrativo. Los tiempos reales dependen de tu proceso.",
+  
   w_eyebrow:"Por qué DASON",w_title:"No somos otra agencia.",
   w1_t:"Empezamos borrando, no añadiendo.",w1_d:"Si un proceso debe ser más simple, lo simplificamos antes de escribir nada.",
   w2_t:"Te decimos qué no automatizar.",w2_d:"Algunas tareas deben seguir siendo humanas. Lo decimos y explicamos por qué.",
@@ -760,7 +879,7 @@ a.sol.prob:hover{background:var(--panel)}
     document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-lang")===lang)); });
     try{ document.documentElement.setAttribute("lang", lang); }catch(e){}
     try{ localStorage.setItem("dason-lang", lang); }catch(e){}
-    calc(); if(typeof renderClocks==="function" && clocksEl) renderClocks();
+    calc(); if(typeof renderClocks==="function" && clocksEl) renderClocks(); if(typeof flowLang==="function") flowLang();
   }
 
   /* language: saved choice, else browser language */
@@ -789,12 +908,57 @@ a.sol.prob:hover{background:var(--panel)}
     window.addEventListener("scroll", function(){ if(!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
     onScroll();
     if(reduce || !("IntersectionObserver" in window)) return;
-    var els = document.querySelectorAll("section:not(.hero):not(#contact) h2, section:not(.hero):not(#contact) .eyebrow, section:not(.hero):not(#contact) .lead, .sol, .aud > div, .why-grid article, .clock, .method, .how > div, .cta-band .cta-row, .faq details, .calc .wrap > div");
+    var els = document.querySelectorAll(".tier, .flow-card, section:not(.hero):not(#contact) h2, section:not(.hero):not(#contact) .eyebrow, section:not(.hero):not(#contact) .lead, .sol, .aud > div, .why-grid article, .clock, .method, .how > div, .cta-band .cta-row, .faq details, .calc .wrap > div");
     var vh = innerHeight; var list = [];
     els.forEach(function(e,i){ if(e.getBoundingClientRect().top < vh) return; e.classList.add("rv"); var sib = e.parentElement ? Array.prototype.indexOf.call(e.parentElement.children,e) : 0; e.style.setProperty("--d", Math.min(sib,5)*0.06+"s"); list.push(e); });
     document.documentElement.classList.add("js-rv");
     var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("rv-in"); io.unobserve(x.target); } }); },{rootMargin:"0px 0px -8% 0px",threshold:.05});
     list.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* flow demo: manual vs automated, loops only while visible */
+  (function(){
+    var card = document.getElementById("flowCard"); if(!card) return;
+    var nodes = Array.prototype.slice.call(card.querySelectorAll(".node")), tot = document.getElementById("flTime"), stEl = document.getElementById("flStatus");
+    var segs = card.querySelectorAll(".seg button");
+    var FLS = {en:["Running","Waiting for a person","Done"],pt:["Executando","Aguardando uma pessoa","Concluído"],es:["Ejecutando","Esperando a una persona","Hecho"]};
+    var CUM = {manual:[3,7,12,16,16], auto:[2,6,9,11,11]}, UNIT = {manual:" min", auto:" s"}, DUR = {manual:1250, auto:460};
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var mode = "auto", idx = 0, timer = null, vis = false, finished = false;
+    function stText(k){ var d = FLS[lang] || FLS.en; stEl.textContent = d[k]; }
+    flowLang = function(){ stText(finished ? 2 : (mode==="manual" ? 1 : 0)); };
+    function labels(){ nodes.forEach(function(n){ n.querySelector(".tm").textContent = n.getAttribute(mode==="auto" ? "data-a" : "data-m"); }); }
+    function clear(){ nodes.forEach(function(n){ n.classList.remove("done","cur"); }); idx = 0; finished = false; tot.textContent = "0"+UNIT[mode]; stText(mode==="manual" ? 1 : 0); }
+    function finish(){ nodes.forEach(function(n){ n.classList.remove("cur"); n.classList.add("done"); }); finished = true; tot.textContent = CUM[mode][4]+UNIT[mode]; stText(2); }
+    function stop(){ if(timer){ clearTimeout(timer); timer = null; } }
+    function step(){
+      if(!vis || document.hidden){ timer = null; return; }
+      if(idx >= nodes.length){ finish(); timer = setTimeout(function(){ clear(); step(); }, 2800); return; }
+      var n = nodes[idx], d = DUR[mode]; card.style.setProperty("--dur", d+"ms");
+      if(idx>0){ nodes[idx-1].classList.remove("cur"); nodes[idx-1].classList.add("done"); }
+      n.classList.add("cur"); tot.textContent = (idx>0 ? CUM[mode][idx-1] : 0)+UNIT[mode];
+      var i = idx; idx++;
+      timer = setTimeout(function(){ tot.textContent = CUM[mode][i]+UNIT[mode]; step(); }, d);
+    }
+    function restart(){ stop(); labels(); clear(); if(reduce){ finish(); return; } if(vis) step(); }
+    segs.forEach(function(b){ b.addEventListener("click", function(){ mode = b.getAttribute("data-mode"); card.setAttribute("data-mode", mode); segs.forEach(function(x){ x.setAttribute("aria-pressed", String(x===b)); }); restart(); }); });
+    restart();
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(en){ vis = en[0].isIntersecting; if(vis && !timer && !reduce){ if(finished) clear(); step(); } if(!vis) stop(); }, {threshold:.25}).observe(card);
+    } else { vis = true; if(!reduce) step(); }
+    document.addEventListener("visibilitychange", function(){ if(!document.hidden && vis && !timer && !reduce){ if(finished) clear(); step(); } });
+  })();
+
+  /* receipt numbers count up once */
+  (function(){
+    if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var els = document.querySelectorAll(".rline .h"); if(!els.length) return;
+    var t0 = null, vals = Array.prototype.map.call(els, function(e){ return parseInt(e.getAttribute("data-v"),10)||0; });
+    els.forEach(function(e){ e.textContent = "0 h"; });
+    function tick(t){ if(t0===null) t0 = t; var p = Math.min(1,(t-t0)/1100), k = 1-Math.pow(1-p,3);
+      els.forEach(function(e,i){ e.textContent = Math.round(vals[i]*k)+" h"; });
+      if(p<1) requestAnimationFrame(tick); }
+    setTimeout(function(){ requestAnimationFrame(tick); }, 350);
   })();
 
   /* mobile menu */
@@ -828,17 +992,27 @@ a.sol.prob:hover{background:var(--panel)}
   var ZONES = [["Madrid","Europe/Madrid"],["São Paulo","America/Sao_Paulo"],["New York","America/New_York"],["London","Europe/London"],["Dubai","Asia/Dubai"],["Singapore","Asia/Singapore"]];
   var CK = {en:["Working hours","Off hours"],pt:["Horário comercial","Fora do horário"],es:["Horario laboral","Fuera de horario"]};
   var clocksEl = $("clocks");
+  var clkBuilt = false, clkLang = "", clkFmt = ZONES.map(function(z){ return new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false,timeZone:z[1]}); });
   function renderClocks(){
-    var now = new Date(), html = "";
-    ZONES.forEach(function(z){
-      var parts = new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:z[1]}).formatToParts(now);
-      var h = 0, mi = "00"; parts.forEach(function(p){ if(p.type==="hour") h = parseInt(p.value,10)%24; if(p.type==="minute") mi = p.value; });
-      var on = h>=9 && h<18;
-      html += '<div class="clock'+(on?' on':'')+'"><div class="c">'+z[0]+'</div><div class="t">'+String(h).padStart(2,"0")+':'+mi+'</div><div class="o"><span>'+CK[lang][on?0:1]+'</span></div></div>';
+    var now = new Date();
+    if(!clkBuilt || clkLang!==lang){
+      var html = "";
+      ZONES.forEach(function(z){ html += '<div class="clock"><div class="c">'+z[0]+'</div><div class="t"><span class="hm">00:00</span><span class="s">:00</span></div><div class="o"><i class="pulse"></i><span class="lb"></span></div></div>'; });
+      clocksEl.innerHTML = html; clkBuilt = true; clkLang = lang;
+    }
+    var cells = clocksEl.children;
+    ZONES.forEach(function(z,i){
+      var h = 0, mi = "00", se = "00";
+      clkFmt[i].formatToParts(now).forEach(function(p){ if(p.type==="hour") h = parseInt(p.value,10)%24; if(p.type==="minute") mi = p.value; if(p.type==="second") se = p.value; });
+      var on = h>=9 && h<18, el = cells[i];
+      var hm = String(h).padStart(2,"0")+":"+mi;
+      var hmEl = el.querySelector(".hm"); if(hmEl.textContent!==hm) hmEl.textContent = hm;
+      el.querySelector(".s").textContent = ":"+se;
+      var lb = el.querySelector(".lb"), txt = CK[lang][on?0:1]; if(lb.textContent!==txt) lb.textContent = txt;
+      el.classList.toggle("on", on);
     });
-    clocksEl.innerHTML = html;
   }
-  renderClocks(); setInterval(renderClocks, 30000);
+  renderClocks(); setInterval(function(){ if(!document.hidden) renderClocks(); }, 1000);
 
   /* payments: region tabs, auto-picked from the visitor's time zone */
   var tabs = document.querySelectorAll(".tabs [role=tab]"), panels = document.querySelectorAll("[data-region-panel]");
