@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-fixed="es"><head>
+<html lang="es" data-fixed="es" class=""><head>
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://dasontech.goatcounter.com; connect-src 'self' https://formspree.io https://dasontech.goatcounter.com; form-action 'self' https://formspree.io; base-uri 'none'; object-src 'none'"><meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DASON | Automatización y agentes de IA para empresas</title>
@@ -56,8 +56,8 @@ p{margin:0}
 .top .wrap{display:flex;align-items:center;gap:20px;height:68px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:800 20px var(--f-display);letter-spacing:.22em}
 .brand svg{width:30px;height:30px;flex:none}
-nav.main{margin-left:auto;display:flex;align-items:center;gap:26px}
-nav.main a{font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--mid);padding:6px 0}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:22px}
+nav.main a{white-space:nowrap;font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--mid);padding:6px 0}
 nav.main a:hover{color:var(--text)}
 .lang{display:flex;border:1px solid var(--line2)}
 .lang button{all:unset;cursor:pointer;font:500 13px var(--f-mono);letter-spacing:.1em;padding:7px 9px;color:var(--mid)}
@@ -159,8 +159,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--text);outline-of
 /* why */
 .why{background:var(--bg2)}
 .why-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
-.why-grid article{background:var(--bg2);padding:32px 28px 36px;grid-column:span 2}
-.why-grid article:nth-child(4),.why-grid article:nth-child(5){grid-column:span 3}
+.why-grid article{background:var(--bg2);padding:32px 28px 36px;grid-column:span 3}
 .why-grid h3{font-size:1.35rem;letter-spacing:-.03em;margin-bottom:12px}
 .why-grid p{color:var(--mid)}
 .why-grid .x{display:block;font:700 13px var(--f-mono);letter-spacing:.14em;color:var(--dim);margin-bottom:22px}
@@ -172,8 +171,6 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--text);outline-of
 .clock .c{font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
 .clock .t{font:700 clamp(1.5rem,3vw,2.1rem) var(--f-display);letter-spacing:-.03em;margin-top:10px;font-variant-numeric:tabular-nums}
 .clock .o{display:flex;align-items:center;gap:8px;margin-top:8px;font:400 13px var(--f-mono);color:var(--dim)}
-.clock .o i{width:8px;height:8px;border:1px solid var(--dim);display:inline-block}
-.clock.on .o i{background:var(--text);border-color:var(--text)}
 .clock.on .o{color:var(--text)}
 .clk-hint{margin-top:14px;font:400 13px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
 
@@ -269,6 +266,35 @@ footer{border-top:1px solid var(--line);padding-block:44px calc(44px + env(safe-
   .stamp{font-size:13px;letter-spacing:.06em}
   details p{padding-right:0}
 }
+.ct-grid .how{grid-template-columns:1fr;margin-top:28px}
+.ct-grid .how div,.ct-grid .how div+div{padding:16px 0;border-left:0;border-bottom:1px solid var(--line)}
+.ct-grid .how-title{margin-top:40px}
+.cta-band{text-align:left;background:var(--bg2)}
+.cta-band h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+.cta-band .lead{margin-top:18px;max-width:640px}
+.sticky-cta{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:40;justify-content:center;background:var(--text);color:var(--ink);box-shadow:0 8px 30px rgba(0,0,0,.6);opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s;pointer-events:none}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+@media (min-width:900px){.sticky-cta{display:none!important}}
+/* motion */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--text);transform:scaleX(0);transform-origin:0 50%;z-index:60;opacity:.8}
+.js-rv .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js-rv .rv.rv-in{opacity:1;transform:none}
+.btn{transition:transform .18s,background .18s,color .18s,border-color .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:none}
+.why-grid article{transition:background .25s}
+.why-grid article:hover{background:#121215}
+.why-grid article:hover .x{color:var(--text)}
+.method{transition:background .25s}
+.method:hover{background:#17171a}
+.aud div{transition:padding-left .25s,background .25s}
+.aud div:hover{padding-left:12px;background:linear-gradient(90deg,#111113,transparent)}
+.clock{transition:background .25s}
+.clock:hover{background:#0f0f11}
+.faq details{transition:background .2s}
+header.top{transition:background .25s,border-color .25s}
+header.top.scrolled{background:rgba(9,9,10,.88);backdrop-filter:blur(10px)}
+@media (prefers-reduced-motion:reduce){.js-rv .rv{opacity:1;transform:none;transition:none}.btn:hover,.sticky-cta{transform:none}.progress{display:none}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .cursor{animation:none}
@@ -318,14 +344,14 @@ a.sol.prob:hover{background:var(--panel)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow" data-i18n="h_eyebrow">Automatización y agentes de IA · En todo el mundo</div>
+      <div class="eyebrow" data-i18n="h_eyebrow">Automatización y agentes de IA</div>
       <h1><span data-i18n="h_title">Borramos la línea que nadie factura.</span><span class="cursor" aria-hidden="true"></span></h1>
       <p class="lead" data-i18n="h_sub">DASON crea agentes de IA, flujos e integraciones que quitan el trabajo repetitivo a tu equipo, para que las personas dediquen sus horas a lo que solo ellas pueden hacer.</p>
       <div class="cta-row">
         <a class="btn" href="#contact" data-i18n="h_cta1">Pedir presupuesto</a>
         <a class="btn ghost" href="#calculator" data-i18n="h_cta2">Calcula tu factura invisible</a>
       </div>
-      <p class="hero-meta" data-i18n="h_meta">Remoto · Cualquier huso horario · English, Português, Español</p>
+      <p class="hero-meta" data-i18n="h_meta">Atención remota · Cualquier país · En 3 idiomas</p>
     </div>
 
     <aside class="receipt" aria-label="Example receipt">
@@ -353,7 +379,6 @@ a.sol.prob:hover{background:var(--panel)}
     </div>
     <div>
       <p class="lead" data-i18n="s_p1">DASON diseña y construye automatización e IA para empresas de cualquier tamaño. Encontramos el trabajo repetitivo escondido en tu operación, lo eliminamos y dejamos a tu equipo con días más claros y menos errores.</p>
-      <p class="lead" data-i18n="s_p2">Somos remotos por diseño: una empresa en São Paulo, Madrid o Dubái recibe el mismo proceso, el mismo estándar y la misma atención.</p>
     </div>
   </div>
 </section>
@@ -361,7 +386,7 @@ a.sol.prob:hover{background:var(--panel)}
 <section id="problems">
   <div class="wrap">
     <div class="eyebrow" data-i18n="pr_eyebrow">Empieza por el problema</div>
-    <h2 data-i18n="pr_title">Sin palabras técnicas. Encuentra la situación que se parece a tu semana.</h2>
+    <h2 data-i18n="pr_title" class="">Sin palabras técnicas. Encuentra la situación que se parece a tu semana.</h2>
     <div class="sol-list"><a class="sol prob" href="automatic-appointment-booking.html"><h3 data-i18n="pr1_t">Los clientes reservan solos</h3><p data-i18n="pr1_q">¿Cómo hago que mis clientes reserven cita por su cuenta?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a><a class="sol prob" href="automatic-customer-replies.html"><h3 data-i18n="pr2_t">Responder mensajes solo</h3><p data-i18n="pr2_q">¿Cómo respondo automáticamente a los mensajes de mis clientes?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a><a class="sol prob" href="order-management-automation.html"><h3 data-i18n="pr3_t">Pedidos organizados</h3><p data-i18n="pr3_q">¿Cómo organizo los pedidos de mi empresa?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a><a class="sol prob" href="automatic-payment-reminders.html"><h3 data-i18n="pr4_t">Recordatorios de pago</h3><p data-i18n="pr4_q">¿Cómo envío recordatorios de pago automáticamente?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a><a class="sol prob" href="lead-follow-up-automation.html"><h3 data-i18n="pr5_t">No perder ningún cliente</h3><p data-i18n="pr5_q">¿Cómo dejo de perder clientes potenciales y organizo mejor la atención?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a><a class="sol prob" href="save-time-on-admin-work.html"><h3 data-i18n="pr6_t">Menos administración, más negocio</h3><p data-i18n="pr6_q">¿Cómo dejo de hacerlo todo a mano y ahorro tiempo en la administración?</p><p class="use" data-i18n="pr_more">Ver cómo funciona →</p></a></div>
     <div class="cta-row" style="margin-top:28px"><a class="btn" href="diagnostic.html" data-i18n="pr_diag">Hacer el diagnóstico de 2 minutos</a><a class="btn ghost" href="solutions.html" data-i18n="pr_all">Ver todas las soluciones</a></div>
   </div>
@@ -370,7 +395,7 @@ a.sol.prob:hover{background:var(--panel)}
 <section id="solutions">
   <div class="wrap">
     <div class="eyebrow" data-i18n="sol_eyebrow">Qué construimos</div>
-    <h2 data-i18n="sol_title">Cinco formas de quitar trabajo a tu equipo.</h2>
+    <h2 data-i18n="sol_title" class="">Cinco formas de quitar trabajo a tu equipo.</h2>
     <div class="sol-list">
       <article class="sol"><h3 data-i18n="sol1_t">Agentes de IA</h3><p data-i18n="sol1_d">Asistentes que leen, deciden dentro de las reglas que defines y pasan los casos difíciles a una persona.</p><p class="use" data-i18n="sol1_u">Dudas de clientes · cualificación de leads · soporte interno</p></article>
       <article class="sol"><h3 data-i18n="sol2_t">Automatización de flujos</h3><p data-i18n="sol2_d">Los pasos repetidos entre tus herramientas, funcionando sin que nadie haga clic.</p><p class="use" data-i18n="sol2_u">Pedidos · facturas · onboarding · aprobaciones</p></article>
@@ -383,10 +408,10 @@ a.sol.prob:hover{background:var(--panel)}
 
 <section class="calc" id="calculator">
   <div class="wrap calc-grid">
-    <div>
+    <div class="">
       <div class="eyebrow" data-i18n="c_eyebrow">Pruébalo</div>
-      <h2 data-i18n="c_title">Calcula la factura que nadie te envía.</h2>
-      <p class="lead" style="margin-top:22px" data-i18n="c_sub">Elige una tarea que tu equipo repite.</p>
+      <h2 data-i18n="c_title" class="">Calcula la factura que nadie te envía.</h2>
+      <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="c_sub">Elige una tarea que tu equipo repite.</p>
       <div class="panel" style="margin-top:32px">
         <div class="fields">
           <label for="cMin"><span data-i18n="c_min">Minutos por vez</span><input id="cMin" type="number" inputmode="decimal" min="0" step="1" value="10"></label>
@@ -413,7 +438,7 @@ a.sol.prob:hover{background:var(--panel)}
 <section id="method">
   <div class="wrap">
     <div class="eyebrow" data-i18n="m_eyebrow">Cómo trabajamos</div>
-    <h2 data-i18n="m_title">Lo mapeamos antes de construirlo.</h2>
+    <h2 data-i18n="m_title" class="">Lo mapeamos antes de construirlo.</h2>
     <div class="steps">
       <div class="step"><span class="n">01</span><h3 data-i18n="m1_t">Diagnóstico</h3><p data-i18n="m1_d">Encontramos el trabajo repetido en tu operación y le ponemos números.</p></div>
       <div class="step"><span class="n">02</span><h3 data-i18n="m2_t">Mapa</h3><p data-i18n="m2_d">Dibujamos el flujo en papel primero. Lo ves y lo apruebas antes de construir nada.</p></div>
@@ -427,29 +452,39 @@ a.sol.prob:hover{background:var(--panel)}
   <div class="wrap aud-grid">
     <div>
       <div class="eyebrow" data-i18n="a_eyebrow">Con quién trabajamos</div>
-      <h2 data-i18n="a_title">Equipos que superaron las hojas de cálculo y el copiar y pegar.</h2>
-      <p class="lead" style="margin-top:22px" data-i18n="a_p">Dueños, fundadores y responsables de operaciones, de cualquier sector y tamaño, en cualquier país.</p>
+      <h2 data-i18n="a_title" class="">Para equipos en crecimiento y para quien está empezando.</h2>
+      <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="a_p">Desde empresas consolidadas hasta profesionales autónomos y negocios nuevos que quieren empezar organizados y ganar tiempo desde el primer día.</p>
     </div>
     <div class="aud">
-      <div><b data-i18n="a1">Tiendas online y marketplaces</b><span data-i18n="a1d">Pedidos, stock, facturas, mensajes de clientes.</span></div>
-      <div><b data-i18n="a2">Agencias y consultoras</b><span data-i18n="a2d">Onboarding, informes, avisos a clientes.</span></div>
-      <div><b data-i18n="a3">Servicios profesionales</b><span data-i18n="a3d">Formularios de entrada, agenda, documentos.</span></div>
-      <div><b data-i18n="a4">Operaciones y logística</b><span data-i18n="a4d">Seguimiento, avisos, gestión de proveedores.</span></div>
-      <div><b data-i18n="a5">Fundadores y startups</b><span data-i18n="a5d">La administración que te impide construir.</span></div>
+      <div class=""><b data-i18n="a6">Profesionales de la belleza y autónomas</b><span data-i18n="a6d">Esteticistas, lash designers y profesionales independientes: reservas online, recordatorios, mensajes de clientes y agenda ordenada.</span></div>
+      <div class=""><b data-i18n="a7">Pequeños emprendedores y profesionales independientes</b><span data-i18n="a7d">Atención al cliente, presupuestos, cobros y administración diaria resueltos sin contratar a nadie más.</span></div>
+      <div class=""><b data-i18n="a8">Negocios recién creados</b><span data-i18n="a8d">Empieza con procesos ordenados desde el primer cliente y ahorra horas cada semana.</span></div>
+      <div class=""><b data-i18n="a1">Tiendas online y marketplaces</b><span data-i18n="a1d">Pedidos, stock, facturas, mensajes de clientes.</span></div>
+      <div class=""><b data-i18n="a2">Agencias y consultoras</b><span data-i18n="a2d">Onboarding, informes, avisos a clientes.</span></div>
+      <div class=""><b data-i18n="a3">Servicios profesionales</b><span data-i18n="a3d">Formularios de entrada, agenda, documentos.</span></div>
+      <div class=""><b data-i18n="a4">Operaciones y logística</b><span data-i18n="a4d">Seguimiento, avisos, gestión de proveedores.</span></div>
+      <div class=""><b data-i18n="a5">Fundadores y startups</b><span data-i18n="a5d">La administración que te impide construir.</span></div>
     </div>
+  </div>
+</section>
+
+<section class="cta-band" id="start">
+  <div class="wrap">
+    <h2 data-i18n="cb_t" class="">¿No sabes por dónde empezar?</h2>
+    <p class="lead" data-i18n="cb_p">Haz el diagnóstico de 2 minutos o cuéntanos qué se repite en tu semana. Te respondemos con una propuesta por escrito.</p>
+    <div class="cta-row"><a class="btn" href="#contact" data-i18n="cta_quote">Pedir presupuesto</a><a class="btn ghost" href="diagnostic.html" data-i18n="pr_diag">Hacer el diagnóstico de 2 minutos</a></div>
   </div>
 </section>
 
 <section class="why" id="why">
   <div class="wrap">
     <div class="eyebrow" data-i18n="w_eyebrow">Por qué DASON</div>
-    <h2 data-i18n="w_title">No somos otra agencia.</h2>
+    <h2 data-i18n="w_title" class="">No somos otra agencia.</h2>
     <div class="why-grid">
-      <article><span class="x">&gt;_</span><h3 data-i18n="w1_t">Empezamos borrando, no añadiendo.</h3><p data-i18n="w1_d">Si un proceso debe ser más simple, lo simplificamos antes de escribir nada.</p></article>
-      <article><span class="x">&gt;_</span><h3 data-i18n="w2_t">Te decimos qué no automatizar.</h3><p data-i18n="w2_d">Algunas tareas deben seguir siendo humanas. Lo decimos y explicamos por qué.</p></article>
-      <article><span class="x">&gt;_</span><h3 data-i18n="w3_t">Números con sus supuestos.</h3><p data-i18n="w3_d">Cada estimación muestra la cuenta que hay detrás. Sin resultados inventados.</p></article>
-      <article><span class="x">&gt;_</span><h3 data-i18n="w4_t">Remotos por diseño, en cualquier huso horario.</h3><p data-i18n="w4_d">Trabajamos en inglés, portugués y español con clientes de cualquier continente.</p></article>
-      <article><span class="x">&gt;_</span><h3 data-i18n="w5_t">Funciona con lo que ya usas.</h3><p data-i18n="w5_d">Conectamos tus herramientas actuales antes de sugerir nuevas.</p></article>
+      <article class=""><span class="x">&gt;_</span><h3 data-i18n="w1_t">Empezamos borrando, no añadiendo.</h3><p data-i18n="w1_d">Si un proceso debe ser más simple, lo simplificamos antes de escribir nada.</p></article>
+      <article class=""><span class="x">&gt;_</span><h3 data-i18n="w2_t">Te decimos qué no automatizar.</h3><p data-i18n="w2_d">Algunas tareas deben seguir siendo humanas. Lo decimos y explicamos por qué.</p></article>
+      <article class=""><span class="x">&gt;_</span><h3 data-i18n="w3_t">Números con sus supuestos.</h3><p data-i18n="w3_d">Cada estimación muestra la cuenta que hay detrás. Sin resultados inventados.</p></article>
+      <article class=""><span class="x">&gt;_</span><h3 data-i18n="w5_t">Funciona con lo que ya usas.</h3><p data-i18n="w5_d">Conectamos tus herramientas actuales antes de sugerir nuevas.</p></article>
     </div>
   </div>
 </section>
@@ -458,49 +493,12 @@ a.sol.prob:hover{background:var(--panel)}
   <div class="wrap glob-grid">
     <div>
       <div class="eyebrow" data-i18n="g_eyebrow">En todo el mundo</div>
-      <h2 data-i18n="g_title">Remotos por diseño. Globales por defecto.</h2>
-      <p class="lead" style="margin-top:22px" data-i18n="g_p">Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.</p>
+      <h2 data-i18n="g_title" class="">Remotos por diseño. Globales por defecto.</h2>
+      <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="g_p">Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.</p>
     </div>
     <div>
-      <div class="clocks" id="clocks"><div class="clock"><div class="c">Madrid</div><div class="t">01:48</div><div class="o"><i></i><span>18–09</span></div></div><div class="clock"><div class="c">São Paulo</div><div class="t">21:48</div><div class="o"><i></i><span>18–09</span></div></div><div class="clock"><div class="c">New York</div><div class="t">19:48</div><div class="o"><i></i><span>18–09</span></div></div><div class="clock"><div class="c">London</div><div class="t">00:48</div><div class="o"><i></i><span>18–09</span></div></div><div class="clock"><div class="c">Dubai</div><div class="t">04:48</div><div class="o"><i></i><span>18–09</span></div></div><div class="clock"><div class="c">Singapore</div><div class="t">08:48</div><div class="o"><i></i><span>18–09</span></div></div></div>
-      <p class="clk-hint" data-i18n="g_hint">Hora local ahora · cuadro lleno = horario laboral</p>
-    </div>
-  </div>
-</section>
-
-<section class="pay" id="payments">
-  <div class="wrap">
-    <div class="eyebrow" data-i18n="p_eyebrow">Pagos</div>
-    <h2 data-i18n="p_title">Paga como mejor encaje en tu país.</h2>
-    <p class="lead" style="margin-top:22px" data-i18n="p_sub">Elige tu región. Los datos de pago llegan con cada propuesta o factura. Nunca se publican aquí.</p>
-
-    <div class="tabs" role="tablist" aria-label="Region">
-      <button role="tab" id="tab-br" aria-selected="false" aria-controls="panel-pay" data-region="br" data-i18n="p_br">Brasil</button>
-      <button role="tab" id="tab-es" aria-selected="true" aria-controls="panel-pay" data-region="es" data-i18n="p_es">España</button>
-      <button role="tab" id="tab-int" aria-selected="false" aria-controls="panel-pay" data-region="int" data-i18n="p_int">Resto del mundo</button>
-    </div>
-
-    <div id="panel-pay" role="tabpanel" tabindex="0">
-      <div class="methods" data-region-panel="br" hidden="">
-        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_card">Tarjeta de crédito</h3><p data-i18n="pm_card_d">Paga con tarjeta mediante un enlace de pago seguro enviado con la factura.</p></div>
-        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_pix">Pix</h3><p data-i18n="pm_pix_d">Pago instantáneo, a cualquier hora, con código QR o clave en tu factura.</p></div>
-      </div>
-      <div class="methods" data-region-panel="es">
-        <div class="method"><span class="k">EUR</span><h3 data-i18n="pm_bizum">Bizum</h3><p data-i18n="pm_bizum_d">Pago instantáneo desde la app de tu banco español.</p></div>
-        <div class="method"><span class="k">EUR · SEPA</span><h3 data-i18n="pm_bank">Transferencia bancaria</h3><p data-i18n="pm_bank_d">Transferencia SEPA. El IBAN va en tu factura.</p></div>
-      </div>
-      <div class="methods" data-region-panel="int" hidden="">
-        <div class="method"><span class="k">USD · EUR · GBP +</span><h3 data-i18n="pm_wise">Wise</h3><p data-i18n="pm_wise_d">Transferencia internacional con comisiones bajas. Un enlace de pago o los datos bancarios llegan con la factura.</p></div>
-        <div class="method"><span class="k">PayPal</span><h3 data-i18n="pm_paypal">PayPal</h3><p data-i18n="pm_paypal_d">Paga con tu saldo o tarjeta de PayPal. Enviamos una factura o enlace de PayPal.</p></div>
-      </div>
-    </div>
-    <p class="safe" data-i18n="p_safe">Paga solo a los datos de una propuesta o factura oficial de DASON, confirmada por email. Nunca te pediremos cambiarlos por mensaje.</p>
-
-    <p class="how-title" data-i18n="p_how">Cómo contratarnos</p>
-    <div class="how">
-      <div><span class="n">01</span><b data-i18n="ps1">Cuéntanos qué automatizar</b></div>
-      <div><span class="n">02</span><b data-i18n="ps2">Recibe una propuesta por escrito</b></div>
-      <div><span class="n">03</span><b data-i18n="ps3">Aprueba, paga a tu manera y empezamos</b></div>
+      <div class="clocks" id="clocks"><div class="clock on"><div class="c">Madrid</div><div class="t">11:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock"><div class="c">São Paulo</div><div class="t">07:27</div><div class="o"><span>Fuera de horario</span></div></div><div class="clock"><div class="c">New York</div><div class="t">05:27</div><div class="o"><span>Fuera de horario</span></div></div><div class="clock on"><div class="c">London</div><div class="t">10:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock on"><div class="c">Dubai</div><div class="t">14:27</div><div class="o"><span>Horario laboral</span></div></div><div class="clock"><div class="c">Singapore</div><div class="t">18:27</div><div class="o"><span>Fuera de horario</span></div></div></div>
+      <p class="clk-hint" data-i18n="g_hint">Hora local ahora en cada ciudad · horario laboral 09–18</p>
     </div>
   </div>
 </section>
@@ -511,6 +509,12 @@ a.sol.prob:hover{background:var(--panel)}
       <div class="eyebrow" data-i18n="ct_eyebrow">Contacto</div>
       <h2 data-i18n="ct_title">Cuéntanos qué se repite en tu semana.</h2>
       <p class="lead" style="margin-top:22px" data-i18n="ct_p">Respondemos a todas las solicitudes. Cuantos más detalles, mejor la primera respuesta.</p>
+    <p class="how-title" data-i18n="p_how">Cómo contratarnos</p>
+      <div class="how">
+        <div class=""><span class="n">01</span><b data-i18n="ps1">Cuéntanos qué automatizar</b></div>
+        <div class=""><span class="n">02</span><b data-i18n="ps2">Recibe una propuesta por escrito</b></div>
+        <div class=""><span class="n">03</span><b data-i18n="ps3">Aprueba, paga a tu manera y empezamos</b></div>
+      </div>
       <div class="ct-links">
         <a id="igLink" href="https://www.instagram.com/dasontech/" target="_blank" rel="noopener"><span>Instagram</span><span>@dasontech</span></a>
         <a id="mailLink" href="mailto:contactdasontech@gmail.com"><span>Email</span><span id="mailText">contactdasontech@gmail.com</span></a>
@@ -560,14 +564,44 @@ a.sol.prob:hover{background:var(--panel)}
 <section id="faq">
   <div class="wrap">
     <div class="eyebrow" data-i18n="faq_eyebrow">Preguntas</div>
-    <h2 data-i18n="faq_title">Preguntas frecuentes.</h2>
+    <h2 data-i18n="faq_title" class="">Preguntas frecuentes.</h2>
     <div class="faq">
-      <details><summary data-i18n="q1">¿Qué tipo de trabajo automatizáis?</summary><p data-i18n="a1x">Trabajo repetitivo con reglas claras: copiar datos, responder dudas comunes, emitir documentos, montar informes, mover información entre herramientas.</p></details>
-      <details><summary data-i18n="q2">¿Sustituís a las personas?</summary><p data-i18n="a2x">No. Quitamos la parte repetitiva para que las personas hagan la que requiere criterio.</p></details>
-      <details><summary data-i18n="q3">¿Cuánto cuesta y cuánto tarda?</summary><p data-i18n="a3x">Depende del alcance. Tras entender tu proceso recibes una propuesta escrita con precio y entregables antes de empezar.</p></details>
-      <details><summary data-i18n="q4">¿Dónde estáis y quién puede contratarnos?</summary><p data-i18n="a4x">DASON es remota y trabaja con empresas de cualquier país, en inglés, portugués y español.</p></details>
-      <details><summary data-i18n="q5">¿Con qué herramientas trabajáis?</summary><p data-i18n="a5x">Con las que ya usas: hojas de cálculo, email, CRM, contabilidad, e-commerce y mensajería. Partimos de lo que tienes.</p></details>
+      <details class=""><summary data-i18n="q1">¿Qué tipo de trabajo automatizáis?</summary><p data-i18n="a1x">Trabajo repetitivo con reglas claras: copiar datos, responder dudas comunes, emitir documentos, montar informes, mover información entre herramientas.</p></details>
+      <details class=""><summary data-i18n="q2">¿Sustituís a las personas?</summary><p data-i18n="a2x">No. Quitamos la parte repetitiva para que las personas hagan la que requiere criterio.</p></details>
+      <details class=""><summary data-i18n="q3">¿Cuánto cuesta y cuánto tarda?</summary><p data-i18n="a3x">Depende del alcance. Tras entender tu proceso recibes una propuesta escrita con precio y entregables antes de empezar.</p></details>
+      <details class=""><summary data-i18n="q4">¿Dónde estáis y quién puede contratarnos?</summary><p data-i18n="a4x">DASON es remota y trabaja con empresas de cualquier país, en inglés, portugués y español.</p></details>
+      <details class=""><summary data-i18n="q5">¿Con qué herramientas trabajáis?</summary><p data-i18n="a5x">Con las que ya usas: hojas de cálculo, email, CRM, contabilidad, e-commerce y mensajería. Partimos de lo que tienes.</p></details>
     </div>
+  </div>
+</section>
+<section class="pay" id="payments">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="p_eyebrow">Pagos</div>
+    <h2 data-i18n="p_title" class="">Paga como mejor encaje en tu país.</h2>
+    <p class="lead" style="margin-top: 22px; --d: 0.12s;" data-i18n="p_sub">Elige tu región. Los datos de pago llegan con cada propuesta o factura. Nunca se publican aquí.</p>
+
+    <div class="tabs" role="tablist" aria-label="Region">
+      <button role="tab" id="tab-br" aria-selected="false" aria-controls="panel-pay" data-region="br" data-i18n="p_br">Brasil</button>
+      <button role="tab" id="tab-es" aria-selected="true" aria-controls="panel-pay" data-region="es" data-i18n="p_es">España</button>
+      <button role="tab" id="tab-int" aria-selected="false" aria-controls="panel-pay" data-region="int" data-i18n="p_int">Internacional</button>
+    </div>
+
+    <div id="panel-pay" role="tabpanel" tabindex="0">
+      <div class="methods" data-region-panel="br" hidden="">
+        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_card">Tarjeta de crédito</h3><p data-i18n="pm_card_d">Paga con tarjeta mediante un enlace de pago seguro que enviamos con la factura. Hasta 18 cuotas disponibles, con cargo por financiación (no es sin intereses).</p></div>
+        <div class="method"><span class="k">BRL</span><h3 data-i18n="pm_pix">Pix</h3><p data-i18n="pm_pix_d">Pago instantáneo, a cualquier hora, con código QR o clave en tu factura.</p></div>
+      </div>
+      <div class="methods" data-region-panel="es">
+        <div class="method"><span class="k">EUR</span><h3 data-i18n="pm_bizum">Bizum</h3><p data-i18n="pm_bizum_d">Pago instantáneo desde la app de tu banco español.</p></div>
+        <div class="method"><span class="k">EUR · SEPA</span><h3 data-i18n="pm_bank">Transferencia bancaria</h3><p data-i18n="pm_bank_d">Transferencia SEPA. El IBAN va en tu factura.</p></div>
+      </div>
+      <div class="methods" data-region-panel="int" hidden="">
+        <div class="method"><span class="k">USD · EUR · GBP +</span><h3 data-i18n="pm_wise">Wise</h3><p data-i18n="pm_wise_d">Transferencia internacional con comisiones bajas. Un enlace de pago o los datos bancarios llegan con la factura.</p></div>
+        <div class="method"><span class="k">PayPal</span><h3 data-i18n="pm_paypal">PayPal</h3><p data-i18n="pm_paypal_d">Paga con tu saldo o tarjeta de PayPal. Enviamos una factura o enlace de PayPal.</p></div>
+      </div>
+    </div>
+    <p class="safe" data-i18n="p_safe">Paga solo a los datos de una propuesta o factura oficial de DASON, confirmada por email. Nunca te pediremos cambiarlos por mensaje.</p>
+
   </div>
 </section>
 </main>
@@ -589,6 +623,7 @@ a.sol.prob:hover{background:var(--panel)}
     <p class="small"><span id="yr">© 2026</span> DASON · AI automation &amp; agents · CNPJ 61.076.954/0001-72</p>
   </div>
 </footer>
+<a class="btn sticky-cta" id="stickyCta" href="#contact" data-i18n="cta_quote">Pedir presupuesto</a>
 
 <script>
 (function(){
@@ -600,10 +635,10 @@ a.sol.prob:hover{background:var(--panel)}
   };
 
   var T = {
-  pt:{nav_menu:"Menu",nav_sol:"Soluções",nav_how:"Método",nav_why:"Por que a DASON",nav_pay:"Pagamentos",nav_ct:"Contato",cta_quote:"Solicitar orçamento",
-  h_eyebrow:"Automação e agentes de IA · Mundo todo",h_title:"Apagamos a linha que ninguém cobra.",
+  pt:{nav_menu:"Menu",nav_sol:"Soluções",nav_how:"Método",nav_why:"Diferenciais",nav_pay:"Pagamentos",nav_ct:"Contato",cta_quote:"Solicitar orçamento",
+  h_eyebrow:"Automação e agentes de IA",h_title:"Apagamos a linha que ninguém cobra.",
   h_sub:"A DASON cria agentes de IA, fluxos e integrações que tiram o trabalho repetitivo da sua equipe, para que as pessoas usem as horas no que só elas fazem.",
-  h_cta1:"Solicitar orçamento",h_cta2:"Calcule a sua conta invisível",h_meta:"Remoto · Qualquer fuso · English, Português, Español",
+  h_cta1:"Solicitar orçamento",h_cta2:"Calcule a sua conta invisível",h_meta:"Atendimento remoto · Qualquer país · Em 3 idiomas",
   r_tag:"Exemplo ilustrativo",r_title:"Custo anual do trabalho repetido",r1:"Copiar e-mails para planilha",r1d:"10 min × 5 por dia",r2:"Responder as mesmas perguntas",r2d:"15 min × 4 por dia",r3:"Montar o relatório semanal",r3d:"2 h × 50 semanas",
   r_total:"Total",r_total_v:"558 horas por ano",r_total_s:"Quase 14 semanas de trabalho.",r_stamp:"Ninguém cobra. Você paga.",r_foot:"A DASON apaga essa linha.",r_note:"250 dias úteis, semanas de 40 h.",
   s_eyebrow:"Quem somos",s_title:"Uma empresa de tecnologia para o trabalho que ninguém deveria fazer à mão.",
@@ -624,7 +659,7 @@ a.sol.prob:hover{background:var(--panel)}
   m2_t:"Mapa",m2_d:"Desenhamos o fluxo no papel primeiro. Você vê e aprova antes de qualquer construção.",
   m3_t:"Construção",m3_d:"Fluxos, agentes e integrações, testados antes de tocar nos seus dados reais.",
   m4_t:"Operação",m4_d:"Acompanhamos e ajustamos conforme o seu negócio muda.",
-  a_eyebrow:"Com quem trabalhamos",a_title:"Equipes que cresceram além das planilhas e do copiar e colar.",a_p:"Donos, fundadores e responsáveis por operações, em qualquer setor, de qualquer porte, em qualquer país.",
+  a_eyebrow:"Com quem trabalhamos",a_title:"Para equipes em crescimento e para quem está começando agora.",a_p:"De empresas estruturadas a profissionais autônomos e negócios recém-criados que querem começar organizados e ganhar tempo desde o primeiro dia.",a6:"Profissionais da beleza e autônomas",a6d:"Esteticistas, lash designers e profissionais independentes: agendamento online, lembretes, mensagens de clientes e agenda organizada.",a7:"Pequenos empreendedores e profissionais autônomos",a7d:"Atendimento, orçamentos, cobranças e rotina administrativa resolvidos sem contratar mais gente.",cb_t:"Não sabe por onde começar?",cb_p:"Faça o diagnóstico de 2 minutos ou conte o que se repete na sua semana. Respondemos com uma proposta por escrito.",a8:"Negócios recém-criados",a8d:"Comece com processos organizados desde o primeiro cliente e economize horas toda semana.",
   a1:"Lojas online e marketplaces",a1d:"Pedidos, estoque, notas fiscais, mensagens de clientes.",a2:"Agências e consultorias",a2d:"Onboarding, relatórios, atualizações para clientes.",a3:"Serviços profissionais",a3d:"Formulários de entrada, agenda, documentos.",a4:"Operações e logística",a4d:"Rastreamento, avisos, acompanhamento de fornecedores.",a5:"Fundadores e startups",a5d:"A burocracia que te impede de construir.",
   w_eyebrow:"Por que a DASON",w_title:"Não é mais uma agência.",
   w1_t:"Começamos apagando, não acrescentando.",w1_d:"Se um processo deve ser mais simples, nós o simplificamos antes de escrever qualquer coisa.",
@@ -632,10 +667,10 @@ a.sol.prob:hover{background:var(--panel)}
   w3_t:"Números com as suas premissas.",w3_d:"Toda estimativa mostra a conta por trás. Sem resultados inventados.",
   w4_t:"Remotos por princípio, em qualquer fuso.",w4_d:"Trabalhamos em inglês, português e espanhol com clientes em qualquer continente.",
   w5_t:"Funciona com o que você já usa.",w5_d:"Conectamos as suas ferramentas atuais antes de sugerir novas.",
-  g_eyebrow:"Mundo todo",g_title:"Remotos por princípio. Globais por padrão.",g_p:"Escreva em inglês, português ou espanhol, de qualquer fuso. Projetos, documentação e suporte funcionam à distância.",g_hint:"Hora local agora · quadrado cheio = horário comercial",
+  g_eyebrow:"Mundo todo",g_title:"Remotos por princípio. Globais por padrão.",g_p:"Escreva em inglês, português ou espanhol, de qualquer fuso. Projetos, documentação e suporte funcionam à distância.",g_hint:"Hora local agora em cada cidade · horário comercial 09–18",
   p_eyebrow:"Pagamentos",p_title:"Pague do jeito que combina com o seu país.",p_sub:"Escolha a sua região. Os dados de pagamento vêm em cada proposta ou fatura. Nunca são publicados aqui.",
-  p_br:"Brasil",p_es:"Espanha",p_int:"Resto do mundo",
-  pm_card:"Cartão de crédito",pm_card_d:"Pague com cartão por um link de pagamento seguro enviado com a fatura.",pm_pix:"Pix",pm_pix_d:"Pagamento instantâneo, a qualquer hora, com QR code ou chave na sua fatura.",
+  p_br:"Brasil",p_es:"Espanha",p_int:"Internacional",
+  pm_card:"Cartão de crédito",pm_card_d:"Pague com cartão por um link de pagamento seguro enviado com a fatura. Parcelamento em até 18x, com cobrança de taxa de parcelamento (não é sem juros).",pm_pix:"Pix",pm_pix_d:"Pagamento instantâneo, a qualquer hora, com QR code ou chave na sua fatura.",
   pm_bizum:"Bizum",pm_bizum_d:"Pagamento instantâneo pelo app do seu banco espanhol.",pm_bank:"Transferência bancária",pm_bank_d:"Transferência SEPA. O IBAN vai na sua fatura.",
   pm_wise:"Wise",pm_wise_d:"Transferência internacional com taxas baixas. Um link de pagamento ou os dados bancários vão com a fatura.",pm_paypal:"PayPal",pm_paypal_d:"Pague com saldo ou cartão pelo PayPal. Enviamos uma fatura ou link do PayPal.",
   p_safe:"Pague apenas para os dados de uma proposta ou fatura oficial da DASON, confirmada por e-mail. Nunca pediremos para mudá-los por mensagem.",
@@ -652,9 +687,9 @@ a.sol.prob:hover{background:var(--panel)}
   q4:"Onde vocês ficam e quem pode contratar?",a4x:"A DASON é remota e trabalha com empresas de qualquer país, em inglês, português e espanhol.",
   q5:"Com quais ferramentas vocês trabalham?",a5x:"Com as que você já usa: planilhas, e-mail, CRMs, contabilidade, e-commerce e mensagens. Partimos do que você tem."},
   es:{nav_menu:"Menú",nav_sol:"Soluciones",nav_how:"Método",nav_why:"Por qué DASON",nav_pay:"Pagos",nav_ct:"Contacto",cta_quote:"Pedir presupuesto",
-  h_eyebrow:"Automatización y agentes de IA · En todo el mundo",h_title:"Borramos la línea que nadie factura.",
+  h_eyebrow:"Automatización y agentes de IA",h_title:"Borramos la línea que nadie factura.",
   h_sub:"DASON crea agentes de IA, flujos e integraciones que quitan el trabajo repetitivo a tu equipo, para que las personas dediquen sus horas a lo que solo ellas pueden hacer.",
-  h_cta1:"Pedir presupuesto",h_cta2:"Calcula tu factura invisible",h_meta:"Remoto · Cualquier huso horario · English, Português, Español",
+  h_cta1:"Pedir presupuesto",h_cta2:"Calcula tu factura invisible",h_meta:"Atención remota · Cualquier país · En 3 idiomas",
   r_tag:"Ejemplo ilustrativo",r_title:"Coste anual del trabajo repetido",r1:"Copiar emails a una hoja",r1d:"10 min × 5 al día",r2:"Responder las mismas preguntas",r2d:"15 min × 4 al día",r3:"Montar el informe semanal",r3d:"2 h × 50 semanas",
   r_total:"Total",r_total_v:"558 horas al año",r_total_s:"Casi 14 semanas de trabajo.",r_stamp:"Nadie lo factura. Lo pagas.",r_foot:"DASON borra esa línea.",r_note:"250 días laborables, semanas de 40 h.",
   s_eyebrow:"Quiénes somos",s_title:"Una empresa de tecnología para el trabajo que nadie debería hacer a mano.",
@@ -675,7 +710,7 @@ a.sol.prob:hover{background:var(--panel)}
   m2_t:"Mapa",m2_d:"Dibujamos el flujo en papel primero. Lo ves y lo apruebas antes de construir nada.",
   m3_t:"Construcción",m3_d:"Flujos, agentes e integraciones, probados antes de tocar tus datos reales.",
   m4_t:"Operación",m4_d:"Lo supervisamos y lo ajustamos a medida que tu negocio cambia.",
-  a_eyebrow:"Con quién trabajamos",a_title:"Equipos que superaron las hojas de cálculo y el copiar y pegar.",a_p:"Dueños, fundadores y responsables de operaciones, de cualquier sector y tamaño, en cualquier país.",
+  a_eyebrow:"Con quién trabajamos",a_title:"Para equipos en crecimiento y para quien está empezando.",a_p:"Desde empresas consolidadas hasta profesionales autónomos y negocios nuevos que quieren empezar organizados y ganar tiempo desde el primer día.",a6:"Profesionales de la belleza y autónomas",a6d:"Esteticistas, lash designers y profesionales independientes: reservas online, recordatorios, mensajes de clientes y agenda ordenada.",a7:"Pequeños emprendedores y profesionales independientes",a7d:"Atención al cliente, presupuestos, cobros y administración diaria resueltos sin contratar a nadie más.",cb_t:"¿No sabes por dónde empezar?",cb_p:"Haz el diagnóstico de 2 minutos o cuéntanos qué se repite en tu semana. Te respondemos con una propuesta por escrito.",a8:"Negocios recién creados",a8d:"Empieza con procesos ordenados desde el primer cliente y ahorra horas cada semana.",
   a1:"Tiendas online y marketplaces",a1d:"Pedidos, stock, facturas, mensajes de clientes.",a2:"Agencias y consultoras",a2d:"Onboarding, informes, avisos a clientes.",a3:"Servicios profesionales",a3d:"Formularios de entrada, agenda, documentos.",a4:"Operaciones y logística",a4d:"Seguimiento, avisos, gestión de proveedores.",a5:"Fundadores y startups",a5d:"La administración que te impide construir.",
   w_eyebrow:"Por qué DASON",w_title:"No somos otra agencia.",
   w1_t:"Empezamos borrando, no añadiendo.",w1_d:"Si un proceso debe ser más simple, lo simplificamos antes de escribir nada.",
@@ -683,10 +718,10 @@ a.sol.prob:hover{background:var(--panel)}
   w3_t:"Números con sus supuestos.",w3_d:"Cada estimación muestra la cuenta que hay detrás. Sin resultados inventados.",
   w4_t:"Remotos por diseño, en cualquier huso horario.",w4_d:"Trabajamos en inglés, portugués y español con clientes de cualquier continente.",
   w5_t:"Funciona con lo que ya usas.",w5_d:"Conectamos tus herramientas actuales antes de sugerir nuevas.",
-  g_eyebrow:"En todo el mundo",g_title:"Remotos por diseño. Globales por defecto.",g_p:"Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.",g_hint:"Hora local ahora · cuadro lleno = horario laboral",
+  g_eyebrow:"En todo el mundo",g_title:"Remotos por diseño. Globales por defecto.",g_p:"Escríbenos en inglés, portugués o español, desde cualquier huso horario. Proyectos, documentación y soporte funcionan en remoto.",g_hint:"Hora local ahora en cada ciudad · horario laboral 09–18",
   p_eyebrow:"Pagos",p_title:"Paga como mejor encaje en tu país.",p_sub:"Elige tu región. Los datos de pago llegan con cada propuesta o factura. Nunca se publican aquí.",
-  p_br:"Brasil",p_es:"España",p_int:"Resto del mundo",
-  pm_card:"Tarjeta de crédito",pm_card_d:"Paga con tarjeta mediante un enlace de pago seguro enviado con la factura.",pm_pix:"Pix",pm_pix_d:"Pago instantáneo, a cualquier hora, con código QR o clave en tu factura.",
+  p_br:"Brasil",p_es:"España",p_int:"Internacional",
+  pm_card:"Tarjeta de crédito",pm_card_d:"Paga con tarjeta mediante un enlace de pago seguro que enviamos con la factura. Hasta 18 cuotas disponibles, con cargo por financiación (no es sin intereses).",pm_pix:"Pix",pm_pix_d:"Pago instantáneo, a cualquier hora, con código QR o clave en tu factura.",
   pm_bizum:"Bizum",pm_bizum_d:"Pago instantáneo desde la app de tu banco español.",pm_bank:"Transferencia bancaria",pm_bank_d:"Transferencia SEPA. El IBAN va en tu factura.",
   pm_wise:"Wise",pm_wise_d:"Transferencia internacional con comisiones bajas. Un enlace de pago o los datos bancarios llegan con la factura.",pm_paypal:"PayPal",pm_paypal_d:"Paga con tu saldo o tarjeta de PayPal. Enviamos una factura o enlace de PayPal.",
   p_safe:"Paga solo a los datos de una propuesta o factura oficial de DASON, confirmada por email. Nunca te pediremos cambiarlos por mensaje.",
@@ -725,7 +760,7 @@ a.sol.prob:hover{background:var(--panel)}
     document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-lang")===lang)); });
     try{ document.documentElement.setAttribute("lang", lang); }catch(e){}
     try{ localStorage.setItem("dason-lang", lang); }catch(e){}
-    calc();
+    calc(); if(typeof renderClocks==="function" && clocksEl) renderClocks();
   }
 
   /* language: saved choice, else browser language */
@@ -734,6 +769,33 @@ a.sol.prob:hover{background:var(--panel)}
   var FIXL = document.documentElement.getAttribute("data-fixed");
   var start = FIXL || saved || (nav==="pt"||nav==="es" ? nav : "en");
   document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); }); });
+
+  /* motion: progress bar, scroll reveal, header state, sticky CTA */
+  (function(){
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var bar = document.createElement("div"); bar.className = "progress"; bar.setAttribute("aria-hidden","true"); document.body.appendChild(bar);
+    var hdr = document.querySelector("header.top"), st = document.getElementById("stickyCta"), ctt = document.getElementById("contact");
+    var tick = false;
+    function onScroll(){
+      var d = document.documentElement, max = d.scrollHeight - innerHeight, y = window.scrollY || d.scrollTop;
+      bar.style.transform = "scaleX(" + (max>0 ? Math.min(1,y/max) : 0) + ")";
+      if(hdr) hdr.classList.toggle("scrolled", y>20);
+      if(st){
+        var r = ctt ? ctt.getBoundingClientRect() : null, atForm = r && r.top < innerHeight*0.9 && r.bottom > 0;
+        var show = y > 700 && !atForm && y < max - 500; st.hidden = false; st.classList.toggle("show", show);
+      }
+      tick = false;
+    }
+    window.addEventListener("scroll", function(){ if(!tick){ tick = true; requestAnimationFrame(onScroll); } }, {passive:true});
+    onScroll();
+    if(reduce || !("IntersectionObserver" in window)) return;
+    var els = document.querySelectorAll("section:not(.hero):not(#contact) h2, section:not(.hero):not(#contact) .eyebrow, section:not(.hero):not(#contact) .lead, .sol, .aud > div, .why-grid article, .clock, .method, .how > div, .cta-band .cta-row, .faq details, .calc .wrap > div");
+    var vh = innerHeight; var list = [];
+    els.forEach(function(e,i){ if(e.getBoundingClientRect().top < vh) return; e.classList.add("rv"); var sib = e.parentElement ? Array.prototype.indexOf.call(e.parentElement.children,e) : 0; e.style.setProperty("--d", Math.min(sib,5)*0.06+"s"); list.push(e); });
+    document.documentElement.classList.add("js-rv");
+    var io = new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("rv-in"); io.unobserve(x.target); } }); },{rootMargin:"0px 0px -8% 0px",threshold:.05});
+    list.forEach(function(e){ io.observe(e); });
+  })();
 
   /* mobile menu */
   var menuBtn = document.getElementById("menuBtn"), mainNav = document.getElementById("mainNav");
@@ -764,6 +826,7 @@ a.sol.prob:hover{background:var(--panel)}
 
   /* clocks */
   var ZONES = [["Madrid","Europe/Madrid"],["São Paulo","America/Sao_Paulo"],["New York","America/New_York"],["London","Europe/London"],["Dubai","Asia/Dubai"],["Singapore","Asia/Singapore"]];
+  var CK = {en:["Working hours","Off hours"],pt:["Horário comercial","Fora do horário"],es:["Horario laboral","Fuera de horario"]};
   var clocksEl = $("clocks");
   function renderClocks(){
     var now = new Date(), html = "";
@@ -771,7 +834,7 @@ a.sol.prob:hover{background:var(--panel)}
       var parts = new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:z[1]}).formatToParts(now);
       var h = 0, mi = "00"; parts.forEach(function(p){ if(p.type==="hour") h = parseInt(p.value,10)%24; if(p.type==="minute") mi = p.value; });
       var on = h>=9 && h<18;
-      html += '<div class="clock'+(on?' on':'')+'"><div class="c">'+z[0]+'</div><div class="t">'+String(h).padStart(2,"0")+':'+mi+'</div><div class="o"><i></i><span>'+(on?"09–18":"18–09")+'</span></div></div>';
+      html += '<div class="clock'+(on?' on':'')+'"><div class="c">'+z[0]+'</div><div class="t">'+String(h).padStart(2,"0")+':'+mi+'</div><div class="o"><span>'+CK[lang][on?0:1]+'</span></div></div>';
     });
     clocksEl.innerHTML = html;
   }
